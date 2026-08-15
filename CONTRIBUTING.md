@@ -3,6 +3,9 @@
 Everything on this site comes from small, readable files. You do not need to
 know Astro to contribute — most changes touch a single Markdown file.
 
+Delegating this to a coding agent? Point it at [AGENTS.md](AGENTS.md) as well,
+which covers the mistakes agents make on a directory of real people.
+
 ## Not comfortable with Git?
 
 Open an issue using the **Add or update an artist** template and a maintainer
