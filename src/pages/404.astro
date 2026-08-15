@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+
+// A tiny rule-based pattern, in keeping with the subject. Fixed seed so the
+// page is byte-identical between builds.
+const SIZE = 12;
+const CELL = 40;
+let seed = 20190412;
+const random = () => {
+  // imul keeps the multiplication inside 32 bits; plain * would overflow the
+  // safe integer range and silently drop the low bits.
+  seed = (Math.imul(seed, 1103515245) + 12345) >>> 0;
+  return seed / 4294967296;
+};
+
+const cells = Array.from({ length: SIZE * SIZE }, (_, index) => ({
+  x: (index % SIZE) * CELL,
+  y: Math.floor(index / SIZE) * CELL,
+  roll: random(),
+}));
+---
+
+<Base title="Not found" description="This page does not exist." noindex>
+  <div class="wrap notfound">
+    <svg viewBox={`0 0 ${SIZE * CELL} ${SIZE * CELL}`} role="img" aria-label="Generative pattern">
+      <g stroke="currentColor" stroke-width="1.5" fill="none">
+        {
+          cells.map((cell) =>
+            cell.roll > 0.62 ? (
+              <circle cx={cell.x + CELL / 2} cy={cell.y + CELL / 2} r={CELL / 2 - 2} />
+            ) : cell.roll > 0.31 ? (
+              <path
+                d={`M ${cell.x + 2} ${cell.y + CELL - 2} A ${CELL - 4} ${CELL - 4} 0 0 1 ${cell.x + CELL - 2} ${cell.y + 2}`}
+              />
+            ) : (
+              <path
+                d={`M ${cell.x + 2} ${cell.y + 2} A ${CELL - 4} ${CELL - 4} 0 0 1 ${cell.x + CELL - 2} ${cell.y + CELL - 2}`}
+              />
+            ),
+          )
+        }
+      </g>
+    </svg>
+
+    <div>
+      <h1 class="lede lede--small">This page does not exist.</h1>
+      <p class="prose mt-2">
+        The link may be outdated. Try the <a href="/">about page</a>{' '}
+        or browse the <a href="/artists">list of artists</a>.
+      </p>
+    </div>
+  </div>
+</Base>

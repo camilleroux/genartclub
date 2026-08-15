@@ -1,0 +1,84 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+// The two latin subsets carry every heading and paragraph above the fold.
+// Preloading them starts the fetch with the document instead of after layout.
+import bodyFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import displayFont from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { cleanPathname } from '../lib/url';
+import { ORG_SHORT_NAME } from '../data/site';
+
+interface Props {
+  /** Page name; the brand is appended, except on the home page. */
+  title: string;
+  description: string;
+  /** The home page is titled after the club itself, with nothing appended. */
+  brandedTitle?: boolean;
+  /** Extra JSON-LD to describe the page contents. */
+  schema?: Record<string, unknown>;
+  noindex?: boolean;
+}
+
+const { title, description, schema, noindex = false, brandedTitle = true } = Astro.props;
+
+const pageTitle = brandedTitle ? `${title} — ${ORG_SHORT_NAME}` : title;
+
+const canonical = new URL(cleanPathname(Astro.url.pathname), Astro.site).href;
+const ogImage = new URL('/images/og.png', Astro.site).href;
+// Set PUBLIC_CF_BEACON_TOKEN in the production environment only, so forks and
+// local development never send analytics.
+const beacon = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/images/favicon.png" type="image/png" />
+    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={ORG_SHORT_NAME} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {
+      schema && (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(schema)}
+        />
+      )
+    }
+    {
+      beacon && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: beacon })}
+        />
+      )
+    }
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

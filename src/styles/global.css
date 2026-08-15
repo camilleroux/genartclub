@@ -1,0 +1,704 @@
+/* Original theme for the club: monochrome, generous whitespace, large light type.
+   The spacing scale is a 10px rhythm expressed against an 18px root. */
+
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #6b6b6b;
+  --faint: #999999;
+  --rule: rgba(0, 0, 0, 0.14);
+
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter Variable', Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
+
+  --text-sm: 0.778rem; /* 14px */
+  --text-base: 0.889rem; /* 16px */
+  --text-md: 1rem; /* 18px */
+  --text-lg: 1.556rem; /* 28px */
+  --text-xl: 2.222rem; /* 40px */
+  --text-2xl: 2.778rem; /* 50px */
+  --text-3xl: 3.333rem; /* 60px */
+
+  --space-1: 0.556rem; /* 10px */
+  --space-2: 1.111rem; /* 20px */
+  --space-3: 2.222rem; /* 40px */
+  --space-4: 2.778rem; /* 50px */
+  --space-5: 5.556rem; /* 100px */
+  --space-6: 8.333rem; /* 150px */
+
+  --measure: 34rem;
+  --gutter: var(--space-3);
+  --nav-height: 4.444rem; /* 80px */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 3rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+figure,
+blockquote {
+  margin: 0;
+}
+
+p {
+  margin: 0 0 var(--space-2);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Layout ------------------------------------------------------------------ */
+
+.wrap {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+/* Only block padding here: these classes are often combined with .wrap, which
+   owns the inline padding. */
+.section {
+  padding-block: var(--space-6);
+}
+
+.section--tight {
+  padding-block: var(--space-5);
+}
+
+.section--inverted {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* The byline sits on black here, where the muted grey would fail contrast. */
+.section--inverted .lede,
+.section--inverted .byline {
+  color: var(--bg);
+}
+
+.lede {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  max-width: 44rem;
+  text-wrap: balance;
+}
+
+.lede--small {
+  font-size: var(--text-xl);
+}
+
+.prose {
+  max-width: var(--measure);
+  font-size: var(--text-md);
+  line-height: 1.65;
+}
+
+.prose a {
+  border-bottom: 1px solid var(--rule);
+  transition: border-color 0.2s ease;
+}
+
+.prose a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* Spacing utilities, for the few blocks that need more air than the default. */
+.mt-2 {
+  margin-top: var(--space-2);
+}
+
+.mt-3 {
+  margin-top: var(--space-3);
+}
+
+/* Bottom margin only: paragraphs already reset the top one, and a shorthand
+   here would override the spacing utilities. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: var(--space-2);
+}
+
+/* Navigation -------------------------------------------------------------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.nav__logo img {
+  height: 1.667rem;
+  width: auto;
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav__links a {
+  color: var(--muted);
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav__links a:hover,
+.nav__links a[aria-current='page'] {
+  color: var(--fg);
+  border-bottom-color: var(--fg);
+}
+
+/* Image strip ------------------------------------------------------------- */
+
+.strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  height: 60vh;
+  min-height: 20rem;
+  max-height: 42rem;
+  background: var(--fg);
+}
+
+/* Without this the placeholder ignores its own hidden attribute, since any
+   author display value beats the browser default for [hidden]: visitors with
+   no JavaScript would get an empty black band under the fallback strip. */
+.strip[hidden] {
+  display: none;
+}
+
+.strip__item {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.strip__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.strip__item:hover img {
+  transform: scale(1.02);
+}
+
+.strip__credit {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.strip__item:hover .strip__credit,
+.strip__item:focus-within .strip__credit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.strip__credit a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.strip__credit em {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Quotes ------------------------------------------------------------------ */
+
+.quotes {
+  display: grid;
+  gap: var(--space-4) var(--gutter);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.quote__text {
+  font-size: var(--text-base);
+  line-height: 1.6;
+  margin: 0 0 var(--space-2);
+}
+
+.quote__who,
+.byline {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin: 0;
+}
+
+.quote__who strong,
+.byline strong {
+  font-weight: 400;
+  color: inherit;
+}
+
+/* Artist list ------------------------------------------------------------- */
+
+.index {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.6rem;
+  padding: var(--space-1) 0;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.index a {
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.index a:hover {
+  color: var(--fg);
+}
+
+.index span {
+  color: #d4d4d4;
+}
+
+/* Deliberately no content-visibility here: skipping off-screen sections makes
+   the browser guess their height, which lands the A-Z anchors in the wrong
+   place. The page is 8kB over the wire, so the render saving is not worth it. */
+.letter {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: var(--gutter);
+  padding-top: var(--space-4);
+}
+
+.letter:last-of-type {
+  padding-bottom: var(--space-5);
+}
+
+.letter__mark {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  line-height: 0.9;
+  color: var(--fg);
+  position: sticky;
+  top: calc(var(--nav-height) + 3.5rem);
+  align-self: start;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-2) var(--gutter);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--rule);
+}
+
+.row:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.row__name {
+  font-size: var(--text-md);
+  line-height: 1.3;
+}
+
+.row__name a {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.row:hover .row__name a,
+.row__name a:focus-visible {
+  border-bottom-color: var(--fg);
+}
+
+.row__role {
+  color: var(--muted);
+  font-size: var(--text-base);
+  margin-top: 0.15rem;
+}
+
+/* Link rows --------------------------------------------------------------- */
+
+.links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1) 0.833rem;
+}
+
+.links--stacked {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+}
+
+.links--row {
+  gap: 0.5rem 0.944rem;
+}
+
+.links--platforms {
+  gap: 0.5rem 1.111rem;
+}
+
+.links__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.links__site {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.2s ease, border-color 0.2s ease;
+  overflow-wrap: anywhere;
+}
+
+.links__site:hover {
+  color: var(--fg);
+  border-bottom-color: var(--fg);
+}
+
+/* Social glyphs sit quiet until pointed at, then take their brand colour. */
+.icon {
+  display: block;
+  fill: var(--fg);
+  opacity: 0.55;
+  transition: fill 0.2s ease, opacity 0.2s ease;
+}
+
+.links a:hover .icon,
+.links a:focus-visible .icon {
+  fill: var(--brand, var(--fg));
+  opacity: 1;
+}
+
+/* Platforms are typeset rather than pictured: crisp at any pixel density, and
+   consistent whether or not the brand has a usable logo. */
+.platform {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.35em 0.6em;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.platform:hover,
+.platform:focus-visible {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+.links__text {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover .links__text {
+  color: var(--fg);
+  border-bottom-color: var(--fg);
+}
+
+/* Artist page ------------------------------------------------------------- */
+
+.profile__head {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.profile__name {
+  font-size: var(--text-2xl);
+  line-height: 1.05;
+}
+
+.profile__role {
+  color: var(--muted);
+  font-size: var(--text-md);
+  margin: 0;
+}
+
+/* Roles are written lowercase in the content files; a heading position wants
+   a capital, without forcing title case on the whole line. */
+.profile__role::first-letter {
+  text-transform: uppercase;
+}
+
+.profile__meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--faint);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.833rem;
+}
+
+/* Child combinator: the platform row is itself a .links element. */
+.profile__head > .links {
+  margin-top: var(--space-2);
+}
+
+.profile__bio {
+  max-width: var(--measure);
+  font-size: var(--text-md);
+  line-height: 1.65;
+  margin-top: var(--space-3);
+}
+
+/* Works come in every aspect ratio, so a grid would leave a hole under every
+   short one. Columns pack them tightly instead. */
+.works {
+  margin-top: var(--space-4);
+  columns: 20rem;
+  column-gap: var(--gutter);
+}
+
+.work {
+  break-inside: avoid;
+  margin-bottom: var(--space-3);
+}
+
+.work figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: var(--space-1);
+}
+
+.back {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.back:hover {
+  color: var(--fg);
+}
+
+/* Footer ------------------------------------------------------------------ */
+
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.footer__line {
+  max-width: 32rem;
+  color: var(--muted);
+  font-size: var(--text-base);
+}
+
+.footer__nav {
+  display: flex;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.footer__nav a:hover {
+  color: var(--fg);
+}
+
+/* Error page -------------------------------------------------------------- */
+
+.notfound {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  padding-block: var(--space-5) var(--space-6);
+}
+
+.notfound svg {
+  width: 100%;
+  max-width: 26rem;
+  height: auto;
+}
+
+/* Responsive -------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  :root {
+    --space-6: 5.556rem;
+    --space-5: 4.444rem;
+  }
+
+  .lede {
+    font-size: var(--text-xl);
+  }
+
+  .strip {
+    height: 46vh;
+  }
+
+  /* Only relevant to the no-script fallback, which renders every item. */
+  .strip__item:nth-child(n + 3) {
+    display: none;
+  }
+
+  .letter {
+    grid-template-columns: 2.8rem 1fr;
+  }
+
+  .letter__mark {
+    font-size: var(--text-xl);
+    position: static;
+  }
+}
+
+@media (max-width: 544px) {
+  html {
+    font-size: 16px;
+  }
+
+  .strip {
+    height: 40vh;
+    min-height: 14rem;
+  }
+
+  .strip__item:nth-child(n + 2) {
+    display: none;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reclaim the letter column: the mark becomes a heading above its rows. */
+  .letter {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .letter__mark {
+    font-size: var(--text-lg);
+  }
+
+  .profile__name {
+    font-size: var(--text-xl);
+  }
+
+  /* Credits are unreachable without hover on touch screens. */
+  .strip__credit {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .strip__item:hover img {
+    transform: none;
+  }
+}

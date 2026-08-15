@@ -1,0 +1,68 @@
+name: Add or update an artist
+description: Ask a maintainer to add your entry or fix an existing one.
+title: 'Artist: '
+labels: [artist]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Prefer sending a pull request? A single Markdown file is all it takes —
+        see [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md).
+        Please do not post an email address here.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The name to display.
+      placeholder: Jane Doe
+    validations:
+      required: true
+  - type: input
+    id: handle
+    attributes:
+      label: Handle
+      description: Your nickname in the club, if it differs from your name.
+      placeholder: janedoe
+  - type: input
+    id: role
+    attributes:
+      label: Role
+      description: A short description of your practice.
+      placeholder: generative artist & creative coder
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      placeholder: Montpellier, France
+  - type: input
+    id: website
+    attributes:
+      label: Website
+      placeholder: https://example.com/
+  - type: textarea
+    id: socials
+    attributes:
+      label: Social profiles
+      description: One URL per line (Instagram, X, Bluesky, Farcaster, Mastodon, TikTok, YouTube, Reddit, Telegram, Discord, LinkedIn, GitHub).
+      placeholder: |
+        https://x.com/janedoe
+        https://instagram.com/janedoe
+  - type: textarea
+    id: platforms
+    attributes:
+      label: Art platforms
+      description: One URL per line (fxhash, objkt, teia, gm.studio, SuperRare, OpenSea, Foundation, Art Blocks...).
+      placeholder: |
+        https://www.fxhash.xyz/u/janedoe
+  - type: textarea
+    id: bio
+    attributes:
+      label: Short bio
+      description: Optional, a few sentences.
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Confirmation
+      options:
+        - label: This is my own entry, or I have the consent of the person concerned.
+          required: true

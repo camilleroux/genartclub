@@ -1,0 +1,15 @@
+---
+import { TAGLINE } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer wrap">
+  <p class="footer__line">{TAGLINE}</p>
+  <nav class="footer__nav" aria-label="Footer">
+    <a href="/">About</a>
+    <a href="/artists">Artists</a>
+    <a href="/credits">This site</a>
+    <span>&copy; {year}</span>
+  </nav>
+</footer>

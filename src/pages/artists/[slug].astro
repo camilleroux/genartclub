@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArtistLinks from '../../components/ArtistLinks.astro';
+import { artworkAlt } from '../../lib/url';
+import { displayName, personNode, secondaryName } from '../../lib/artist';
+import { ORG_NAME, organization } from '../../data/site';
+
+export async function getStaticPaths() {
+  const artists = await getCollection('artists');
+  return artists.map((artist) => ({
+    params: { slug: artist.id },
+    props: { artist },
+  }));
+}
+
+interface Props {
+  artist: CollectionEntry<'artists'>;
+}
+
+const { artist }: Props = Astro.props;
+const { data } = artist;
+const { Content } = await render(artist);
+
+// The gallery flows in CSS columns, so document order is not visual order: only
+// the very first work is reliably above the fold. The rest, including the tops
+// of the other columns, are left to the browser's lazy loading.
+const EAGER_WORKS = 1;
+
+const defined = (value: string | undefined): value is string => value !== undefined;
+
+const title = displayName(data);
+const fullName = secondaryName(data);
+
+const schema = {
+  '@context': 'https://schema.org',
+  ...personNode(artist, Astro.site),
+  memberOf: organization(Astro.site),
+};
+
+const description = [data.name, data.role, `member of the ${ORG_NAME}`]
+  .filter(defined)
+  .join(', ');
+
+const meta = [fullName, data.pronouns, data.location].filter(defined);
+---
+
+<Base title={title} description={description} schema={schema}>
+  <div class="wrap section--tight">
+    <a class="back" href="/artists">&larr; All artists</a>
+
+    <header class="profile__head">
+      <h1 class="profile__name">{title}</h1>
+      {
+        meta.length > 0 && (
+          <div class="profile__meta">
+            {meta.map((item) => (
+              <span>{item}</span>
+            ))}
+          </div>
+        )
+      }
+      {data.role && <p class="profile__role">{data.role}</p>}
+      <ArtistLinks
+        website={data.website}
+        socials={data.socials}
+        platforms={data.platforms}
+        stacked
+      />
+    </header>
+
+    {
+      artist.body?.trim() && (
+        <div class="profile__bio">
+          <Content />
+        </div>
+      )
+    }
+
+    {
+      data.artworks && data.artworks.length > 0 && (
+        <div class="works">
+          {data.artworks.map((artwork, index) => (
+            <figure class="work">
+              <Image
+                src={artwork.image}
+                alt={artworkAlt(artwork.title, data.name)}
+                width={1200}
+                widths={[500, 800, 1200]}
+                sizes="(max-width: 900px) 100vw, 40vw"
+                loading={index < EAGER_WORKS ? 'eager' : 'lazy'}
+                fetchpriority={index < EAGER_WORKS ? 'high' : undefined}
+              />
+              {(artwork.title || artwork.year) && (
+                <figcaption>
+                  {artwork.title}
+                  {artwork.title && artwork.year && ' — '}
+                  {artwork.year}
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</Base>

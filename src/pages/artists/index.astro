@@ -1,0 +1,98 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArtistLinks from '../../components/ArtistLinks.astro';
+import { getCollection } from 'astro:content';
+import { artistPath } from '../../lib/url';
+import { displayName } from '../../lib/artist';
+import { ORG_NAME } from '../../data/site';
+
+const artists = await getCollection('artists');
+
+// Sort on the name that is displayed first, ignoring case, accents and any
+// leading punctuation such as the @ of a handle.
+const sortKey = (value: string) =>
+  value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/^[^a-z0-9]+/, '');
+
+const keyed = artists
+  .map((artist) => ({ artist, key: sortKey(displayName(artist.data)) }))
+  .sort((a, b) => a.key.localeCompare(b.key));
+
+const groups = new Map<string, typeof artists>();
+for (const { artist, key } of keyed) {
+  const letter = /^[a-z]/.exec(key)?.[0].toUpperCase() ?? '#';
+  groups.set(letter, [...(groups.get(letter) ?? []), artist]);
+}
+
+const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const anchorId = (letter: string) => (letter === '#' ? 'other' : letter);
+
+// Letters with no member stay visible but greyed out, so the index never moves.
+const index = [...(groups.has('#') ? ['#'] : []), ...LETTERS].map((letter) => ({
+  letter,
+  id: anchorId(letter),
+  present: groups.has(letter),
+}));
+
+const sections = [...groups].map(([letter, members]) => ({
+  letter,
+  id: anchorId(letter),
+  members,
+}));
+
+const description = `The ${artists.length} members of the ${ORG_NAME}, with links to their work.`;
+---
+
+<Base title="Artists" description={description}>
+  <div class="wrap">
+    <section class="section--tight">
+      <h1 class="lede lede--small">Artists</h1>
+      <p class="prose mt-2">
+        {artists.length} members of the club listed here. Something missing or out
+        of date? Anyone can send a fix.
+      </p>
+    </section>
+
+    <nav class="index" aria-label="Jump to letter">
+      {
+        index.map((entry) =>
+          entry.present ? (
+            <a href={`#${entry.id}`}>{entry.letter}</a>
+          ) : (
+            <span aria-hidden="true">{entry.letter}</span>
+          ),
+        )
+      }
+    </nav>
+
+    {
+      sections.map((entry) => (
+        <section class="letter" id={entry.id}>
+          <h2 class="letter__mark" aria-label={`Artists starting with ${entry.letter}`}>
+            {entry.letter}
+          </h2>
+          <div>
+            {entry.members.map((artist) => (
+              <article class="row">
+                <div>
+                  <p class="row__name">
+                    <a href={artistPath(artist.id)}>{displayName(artist.data)}</a>
+                  </p>
+                  {artist.data.role && <p class="row__role">{artist.data.role}</p>}
+                </div>
+                <ArtistLinks
+                  website={artist.data.website}
+                  socials={artist.data.socials}
+                  compact
+                />
+              </article>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Base>

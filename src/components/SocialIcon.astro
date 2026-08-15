@@ -1,0 +1,63 @@
+---
+// Monochrome social glyphs from simple-icons (CC0), inlined at build time so
+// nothing ships to the client. The link carries the accessible name, so the
+// glyph itself is decorative.
+import {
+  siBluesky,
+  siDiscord,
+  siFarcaster,
+  siGithub,
+  siInstagram,
+  siMastodon,
+  siReddit,
+  siTelegram,
+  siTiktok,
+  siX,
+  siYoutube,
+  type SimpleIcon,
+} from 'simple-icons';
+import { SOCIAL_LABELS, type SocialKey } from '../content.config';
+
+interface Props {
+  network: SocialKey;
+  size?: number;
+}
+
+const { network, size = 18 } = Astro.props;
+
+// Named imports rather than an indexed namespace, so the build does not have to
+// parse all 3400 icons. LinkedIn has no entry: simple-icons dropped it over a
+// trademark request, and it falls back to a text label.
+const ICONS: Partial<Record<SocialKey, SimpleIcon>> = {
+  instagram: siInstagram,
+  x: siX,
+  bluesky: siBluesky,
+  farcaster: siFarcaster,
+  mastodon: siMastodon,
+  tiktok: siTiktok,
+  youtube: siYoutube,
+  reddit: siReddit,
+  telegram: siTelegram,
+  discord: siDiscord,
+  github: siGithub,
+};
+
+const icon = ICONS[network];
+---
+
+{
+  icon ? (
+    <svg
+      class="icon"
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      aria-hidden="true"
+      style={`--brand: #${icon.hex}`}
+    >
+      <path d={icon.path} />
+    </svg>
+  ) : (
+    <span class="links__text">{SOCIAL_LABELS[network]}</span>
+  )
+}

@@ -1,0 +1,17 @@
+# Pages that existed on the previous site and no longer do.
+# Only paths can be matched here: the apex-to-www redirect is a Cloudflare
+# redirect rule, and HTTP to HTTPS is handled by Cloudflare automatically.
+# Static rules first, wildcards last, as Cloudflare evaluates them in order.
+/showcase                /artists             301
+/coming-soon             /                    301
+/hello-world             /                    301
+/author/admin            /                    301
+/category/uncategorized  /                    301
+/feed                    /                    301
+/feed/                   /                    301
+/wp-sitemap.xml          /sitemap-index.xml   301
+/footer/*                /                    301
+/wp-sitemap-*            /sitemap-index.xml   301
+
+# WordPress infrastructure paths are deliberately left to 404: redirecting them
+# to the home page would create soft 404s, and this file cannot return 410.

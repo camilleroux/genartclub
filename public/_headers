@@ -1,0 +1,17 @@
+# Cloudflare Pages serves everything with `max-age=0, must-revalidate` by
+# default, so even content-hashed files are revalidated on every visit.
+# Cache-Control is only declared on specific paths here: when two rules set the
+# same header, Cloudflare joins the values with a comma instead of overriding.
+
+# Filenames contain a content hash, so these can never go stale.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# These keep their name across deploys, so give them a day, not a year.
+/images/*
+  Cache-Control: public, max-age=86400
+
+# HTML deliberately keeps the platform default, so a correction goes live at
+# once. Pages already sends X-Content-Type-Options and Referrer-Policy.
+/*
+  X-Frame-Options: DENY

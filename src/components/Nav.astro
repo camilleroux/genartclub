@@ -1,0 +1,24 @@
+---
+import { cleanPathname } from '../lib/url';
+
+const path = cleanPathname(Astro.url.pathname);
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`);
+---
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__logo" href="/" aria-label="GenArtClub, home">
+      {/* The original animated logo, served untouched from public/: re-encoding
+          it costs visible quality, and the image pipeline would drop the
+          animation entirely. */}
+      <img src="/images/logo.gif" alt="GenArtClub" width="361" height="202" />
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>About</a>
+      <a href="/artists" aria-current={isCurrent('/artists') ? 'page' : undefined}>
+        Artists
+      </a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,12 @@
+---
+name: "Jos Vromans"
+role: "generative artist & math artist"
+website: "http://www.josvromans.com/"
+socials:
+  instagram: "https://www.instagram.com/jos.vromans/"
+  x: "https://twitter.com/josvromans"
+artworks:
+  - image: "../../assets/artworks/jos-vromans/attraction-mint-195.jpg"
+    title: "Attraction mint #195"
+    year: 2021
+---

@@ -1,0 +1,148 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Strip from '../components/Strip.astro';
+import { artistPath } from '../lib/url';
+import { ARCHIVE_SOURCE, DESCRIPTION, TAGLINE, organization } from '../data/site';
+import { getMaintainer } from '../lib/maintainer';
+
+const home = new URL('/', Astro.site).href;
+
+// Two nodes: the club itself, and the website that documents it. Keeping them
+// distinct is what lets the site declare a maintainer without implying the club
+// is maintained by one person.
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@id': `${home}#organization`,
+      ...organization(Astro.site),
+      logo: new URL('/images/logo.gif', Astro.site).href,
+      foundingDate: '2019',
+      foundingLocation: { '@type': 'Place', name: 'Paris, France' },
+      description: DESCRIPTION,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${home}#website`,
+      url: home,
+      name: 'GenArtClub',
+      about: { '@id': `${home}#organization` },
+      maintainer: (await getMaintainer(Astro.site)).node,
+      // The rebuild is derived from the archived original; say so.
+      isBasedOn: ARCHIVE_SOURCE,
+    },
+  ],
+};
+
+const quotes: { text: string; who: string; slug?: string }[] = [
+  {
+    text: 'After creating generative art for several years in isolation, it is remarkable to have found the GenArtClub, where so much talent comes together to share ideas, techniques, critique artworks and to be there to support each other.',
+    who: 'Jos Vromans',
+    slug: 'jos-vromans',
+  },
+  {
+    text: "The Gen Art Club is more than simply a group of artists; it's like a family in which we all support one another, whether it's for work or personal reasons. It feels fantastic to be among so many talented and skilled folks who share the same interests, and it inspires you to do better every day. The support and feedback, as well as the discussion of challenges faced, are extremely valuable.",
+    who: 'RalenArc',
+    slug: 'ralenarc',
+  },
+  {
+    text: "I'm grateful every day to belong to this supportive, creative group. I have had invaluable constructive feedback on my works in progress, been amazed and inspired by what my fellow artists are working on, and benefited immensely from others generously sharing their knowledge of techniques and best practices. Being a part of this community has made me a better artist.",
+    who: 'Jess Hewitt',
+    slug: 'jess-hewitt',
+  },
+  {
+    text: 'What is special about this space is that it was around and vibrant even before the recent excitement around NFTs. I find it comforting to know that the foundation of this community is based in an interest in (perhaps even a compulsion for?) the practice of generative art and mutual respect for each other. To me, this space is inspiring, comfortable, and safe.',
+    who: 'Devi Parikh',
+    slug: 'devi-parikh',
+  },
+  {
+    text: "The Generative Artist Club has been an absolutely invaluable resource and support to me in my generative art journey over the last few years. We support each other emotionally as well as technically, offering advice on surviving today's art world and on code, aesthetics and concept. It's also a mutual inspiration and development machine.",
+    who: 'Amy Goodchild',
+    slug: 'amy-goodchild',
+  },
+  {
+    text: 'The Generative Art Club is a fantastic, supportive and pragmatic community of talented artists, creators and visionaries. It is a privilege to contribute to the field supported by such a motivated group. Having been a member for some time now, it has been amazing to see what this group has evolved into, and even more excited to see where it will go next.',
+    who: 'Andrew Strauss',
+    slug: 'ad-strauss',
+  },
+];
+
+// Members are credited under the name they signed their quote with, but the
+// links are resolved against the collection so a renamed file fails the build
+// instead of quietly 404ing.
+const members = new Set((await getCollection('artists')).map((artist) => artist.id));
+for (const quote of quotes) {
+  if (quote.slug && !members.has(quote.slug)) {
+    throw new Error(`Quote from "${quote.who}" links to unknown artist "${quote.slug}".`);
+  }
+}
+---
+
+<Base title="Generative Artists Club" brandedTitle={false} description={DESCRIPTION} schema={schema}>
+  <section class="section wrap">
+    <p class="lede">
+      We aim to automate our artistic vision through rule-based systems. Our
+      artwork manifests through digital mediums, crypto environments, robotics,
+      and light.
+    </p>
+    <p class="prose mt-3">
+      The artists and builders in this community are spearheading the future of
+      generative art.
+    </p>
+  </section>
+
+  <Strip />
+
+  <section class="section section--inverted">
+    <div class="wrap">
+      <h2 class="lede lede--small">{TAGLINE}</h2>
+      <div class="prose mt-3">
+        <p>
+          In 2019 the generative art scene was spread across Instagram, Reddit,
+          Twitter, and localized galleries. I was having dozens of conversations
+          in parallel with different artists and thought we could all benefit
+          from each other's knowledge and experience, so I invited 50 artists to
+          a Slack group and the Generative Artists Club was born.
+        </p>
+        <p>
+          It has grown to 400 of the most impactful and focused artists in the
+          space, and is the epicenter for the new wave of generative art
+          resurgence that has accompanied NFTs.
+        </p>
+        <p>
+          We share techniques, critique works in progress, support each other's
+          mental health, compare contracts, and deepen friendships. This club has
+          become the private harbor for generative artists and has helped push
+          the medium forward as a coherent community.
+        </p>
+        <p class="byline mt-2">
+          <strong>Aaron Penne</strong> — Visual artist &amp; founder of GenArtClub
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <p class="eyebrow">Members</p>
+    <div class="quotes">
+      {
+        quotes.map((quote) => (
+          <blockquote class="quote">
+            <p class="quote__text">{quote.text}</p>
+            <p class="quote__who">
+              {quote.slug ? (
+                <a href={artistPath(quote.slug)}>
+                  <strong>{quote.who}</strong>
+                </a>
+              ) : (
+                <strong>{quote.who}</strong>
+              )}{' '}
+              — Artist &amp; Member
+            </p>
+          </blockquote>
+        ))
+      }
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,61 @@
+---
+import SocialIcon from './SocialIcon.astro';
+import { SOCIAL_KEYS, SOCIAL_LABELS, type SocialKey } from '../content.config';
+import { platformName } from '../data/platforms';
+import { hostname } from '../lib/url';
+
+interface Props {
+  website?: string;
+  socials?: Partial<Record<SocialKey, string>>;
+  platforms?: string[];
+  /** Directory rows: the essentials only, so a long list stays scannable. */
+  compact?: boolean;
+  /** Artist pages: platforms get their own labelled row. */
+  stacked?: boolean;
+}
+
+const { website, socials, platforms, compact = false, stacked = false } = Astro.props;
+
+const COMPACT_SOCIALS: SocialKey[] = ['instagram', 'x'];
+const keys = compact ? COMPACT_SOCIALS : SOCIAL_KEYS;
+
+const orderedSocials = keys.flatMap((key) => {
+  const url = socials?.[key];
+  return url ? [{ key, url }] : [];
+});
+
+const shownPlatforms = compact ? [] : (platforms ?? []);
+const iconSize = stacked ? 22 : 18;
+---
+
+<div class:list={['links', stacked && 'links--stacked']}>
+  <div class="links links--row">
+    {
+      website && (
+        <a class="links__site" href={website} target="_blank" rel="noopener me">
+          {stacked ? hostname(website) : 'Website'}
+        </a>
+      )
+    }
+    {
+      orderedSocials.map(({ key, url }) => (
+        <a href={url} target="_blank" rel="noopener me" title={SOCIAL_LABELS[key]} aria-label={SOCIAL_LABELS[key]}>
+          <SocialIcon network={key} size={iconSize} />
+        </a>
+      ))
+    }
+  </div>
+
+  {
+    shownPlatforms.length > 0 && (
+      <div class="links links--row links--platforms">
+        <span class="links__label">Also on</span>
+        {shownPlatforms.map((url) => (
+          <a class="platform" href={url} target="_blank" rel="noopener">
+            {platformName(url)}
+          </a>
+        ))}
+      </div>
+    )
+  }
+</div>

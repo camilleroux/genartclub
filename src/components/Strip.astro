@@ -1,0 +1,178 @@
+---
+import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import type { ImageMetadata } from 'astro';
+import { artistPath, artworkAlt } from '../lib/url';
+import { MIN_STRIP_WIDTH } from '../data/image-budget.mjs';
+
+// Four artworks side by side, so each cell is taller than it is wide. Cropping
+// to that shape at build time avoids serving a 16:9 frame the browser would
+// have to scale up to cover the cell.
+const COUNT = 4;
+const CELL = {
+  // A cell is a quarter of the viewport, so 720px covers it on a retina laptop;
+  // going higher only buys sharpness a cropped backdrop does not need.
+  wide: {
+    aspect: 0.72,
+    widths: [480, 720],
+    sizes: '(max-width: 544px) 100vw, (max-width: 900px) 50vw, 25vw',
+  },
+  narrow: { aspect: 1.2, widths: [420, 840, 1260], sizes: '100vw' },
+};
+
+type Crop = { src: string; srcset: string };
+
+async function crop(image: ImageMetadata, aspect: number, widths: number[]): Promise<Crop> {
+  // A crop cannot be larger than the source allows in either dimension.
+  const maxWidth = Math.floor(Math.min(image.width, image.height * aspect));
+  const capped = [...new Set(widths.map((width) => Math.min(width, maxWidth)))].sort(
+    (a, b) => a - b,
+  );
+  const [smallest, ...larger] = await Promise.all(
+    capped.map((width) =>
+      getImage({
+        src: image,
+        width,
+        height: Math.round(width / aspect),
+        fit: 'cover',
+        format: 'webp',
+        // Cropped decoration behind text, not the artwork itself: the artist
+        // page serves the full frame at full quality.
+        quality: 72,
+      }),
+    ),
+  );
+  return {
+    // Smallest variant as the fallback: every browser that matters reads the
+    // srcset, so the plain src should be the cheapest of the set.
+    src: smallest.src,
+    srcset: [smallest, ...larger]
+      .map((variant, index) => `${variant.src} ${capped[index]}w`)
+      .join(', '),
+  };
+}
+
+const artists = await getCollection('artists');
+
+const pool = await Promise.all(
+  artists
+    .flatMap((artist) =>
+      (artist.data.artworks ?? [])
+        .filter((artwork) => artwork.image.width >= MIN_STRIP_WIDTH)
+        .map((artwork) => ({ artist, artwork })),
+    )
+    .map(async ({ artist, artwork }) => ({
+      wide: await crop(artwork.image, CELL.wide.aspect, CELL.wide.widths),
+      narrow: await crop(artwork.image, CELL.narrow.aspect, CELL.narrow.widths),
+      artist: artist.data.name,
+      href: artistPath(artist.id),
+      alt: artworkAlt(artwork.title, artist.data.name),
+      detail: [artwork.title, artwork.year && `(${artwork.year})`].filter(Boolean).join(' '),
+    })),
+);
+
+// One work per artist, so a prolific member cannot fill the band on their own.
+const firstPerArtist = [...new Map(pool.map((item) => [item.href, item])).values()];
+
+// Deterministic default selection, replaced client-side on each visit.
+const shown = firstPerArtist.slice(0, COUNT);
+---
+
+{
+  pool.length > 0 && (
+    <section aria-label="Works by members">
+      <noscript>
+        <div class="strip">
+          {shown.map((item) => (
+            <figure class="strip__item">
+              <img src={item.wide.src} srcset={item.wide.srcset} sizes={CELL.wide.sizes} alt={item.alt} />
+              <figcaption class="strip__credit">
+                <a href={item.href}>{item.artist}</a>
+                {item.detail && <em> — {item.detail}</em>}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </noscript>
+
+      <div class="strip" data-strip hidden />
+
+      {/* Builds the strip from a random pick before the browser fetches
+          anything, so only the images actually shown are downloaded. */}
+      <script is:inline define:vars={{ pool, count: COUNT, cell: CELL }}>
+        (() => {
+          const strip = document.querySelector('[data-strip]');
+          if (!strip) return;
+
+          // Narrow screens get fewer, wider crops.
+          const narrow = window.matchMedia('(max-width: 544px)').matches;
+          const fits = narrow
+            ? 1
+            : window.matchMedia('(max-width: 900px)').matches
+              ? 2
+              : count;
+
+          const shuffle = (list) => {
+            for (let i = list.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [list[i], list[j]] = [list[j], list[i]];
+            }
+            return list;
+          };
+
+          // Pick one work per artist first, so a prolific member cannot fill
+          // the band; only repeat artists if there are not enough of them.
+          const byArtist = new Map();
+          for (const item of pool) {
+            byArtist.set(item.href, [...(byArtist.get(item.href) ?? []), item]);
+          }
+          const groups = shuffle([...byArtist.values()]);
+          const items = groups.map((works) => works[Math.floor(Math.random() * works.length)]);
+          if (items.length < fits) {
+            const rest = pool.filter((item) => !items.includes(item));
+            items.push(...shuffle(rest).slice(0, fits - items.length));
+          }
+
+          const shape = narrow ? cell.narrow : cell.wide;
+          const fragment = document.createDocumentFragment();
+
+          items.slice(0, fits).forEach((item, index) => {
+            const figure = document.createElement('figure');
+            figure.className = 'strip__item';
+
+            const img = document.createElement('img');
+            const crop = narrow ? item.narrow : item.wide;
+            img.srcset = crop.srcset;
+            img.sizes = shape.sizes;
+            img.src = crop.src;
+            img.alt = item.alt;
+            // These come from the same build-time pipeline as <Image>; the
+            // marker tells the dev toolbar audit not to flag them as raw tags.
+            img.dataset.imageComponent = '';
+            // This band is the largest thing above the fold.
+            if (index === 0) img.fetchPriority = 'high';
+            figure.append(img);
+
+            const caption = document.createElement('figcaption');
+            caption.className = 'strip__credit';
+            const link = document.createElement('a');
+            link.href = item.href;
+            link.textContent = item.artist;
+            caption.append(link);
+            if (item.detail) {
+              const em = document.createElement('em');
+              em.textContent = ` — ${item.detail}`;
+              caption.append(em);
+            }
+            figure.append(caption);
+
+            fragment.append(figure);
+          });
+
+          strip.append(fragment);
+          strip.hidden = false;
+        })();
+      </script>
+    </section>
+  )
+}
