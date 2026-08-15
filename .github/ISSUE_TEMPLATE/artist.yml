@@ -30,6 +30,11 @@ body:
       description: The line under your name — a short description of your practice, not a bio.
       placeholder: Generative artist & creative coder
   - type: input
+    id: pronouns
+    attributes:
+      label: Pronouns
+      placeholder: she/her
+  - type: input
     id: location
     attributes:
       label: Location

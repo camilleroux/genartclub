@@ -54,7 +54,8 @@ An optional short bio, in Markdown.
 - **`tagline`** is the line under your name: a short description of your
   practice, not a bio — the Markdown body below the frontmatter is for that. It
   reads as a sentence fragment and starts with a capital: `Generative artist`,
-  not `generative artist`. `location` and `pronouns` are optional.
+  not `generative artist`. `pronouns` and `location` are optional, and show
+  under the name in that order.
 - **`socials`** uses fixed keys, so the same network is never labelled two
   different ways: `instagram`, `x`, `bluesky`, `farcaster`, `mastodon`,
   `tiktok`, `youtube`, `reddit`, `telegram`, `discord`, `linkedin`, `github`.

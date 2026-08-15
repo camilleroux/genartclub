@@ -520,6 +520,15 @@ a:hover .links__text {
   gap: 0.35rem 0.833rem;
 }
 
+/* A name, pronouns and a place read as one line, and the gap alone left them
+   looking like two words with a wide space. The separator leads the item it
+   follows rather than trailing the previous one, so a wrapped line begins with
+   it instead of ending on a dangling mark. */
+.profile__meta span:not(:first-child)::before {
+  content: '·';
+  margin-right: 0.833rem;
+}
+
 /* Child combinator: the platform row is itself a .links element. */
 .profile__head > .links {
   margin-top: var(--space-2);

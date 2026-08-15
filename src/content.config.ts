@@ -83,8 +83,9 @@ const artists = defineCollection({
             error: 'Taglines read as sentence fragments here, so start with a capital.',
           })
           .optional(),
-        location: z.string().optional(),
+        // Declared in the order they are shown, under the name.
         pronouns: z.string().optional(),
+        location: z.string().optional(),
         website: z.url().optional(),
         socials: socials.optional(),
         // Plain list of URLs: known art platforms are matched by domain.

@@ -1,6 +1,7 @@
 ---
 name: "Camille Roux"
 tagline: "Algorithmic artist & creative coder"
+pronouns: "he/him"
 location: "Montpellier, France"
 website: "https://art.camilleroux.com/"
 socials:
