@@ -5,10 +5,11 @@ pronouns: "he/him"
 location: "Montpellier, France"
 website: "https://art.camilleroux.com/"
 socials:
-  x: "https://x.com/camillerouxart"
   instagram: "https://www.instagram.com/camillerouxart/"
+  x: "https://x.com/camillerouxart"
   bluesky: "https://bsky.app/profile/art.camilleroux.com"
   farcaster: "https://farcaster.xyz/camilleroux"
+  mastodon: "https://genart.social/@camillerouxart"
   tiktok: "https://www.tiktok.com/@camillerouxart"
   github: "https://github.com/camilleroux"
 platforms:
