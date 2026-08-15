@@ -1,10 +1,10 @@
 ---
 name: "Jeff Palmer"
-handle: "jeffpalmer"
-role: "abstract generative artist"
-website: "https://jpalmer.dev/"
+handle: "jeff-palmer"
+role: "Artist / Programmer"
+website: "https://jpalmer.art/"
 socials:
-  instagram: "https://www.instagram.com/jwpalmer6/"
-  x: "https://twitter.com/jeffpalmer"
+  instagram: "https://www.instagram.com/jpalmer.art/"
   github: "https://github.com/JeffreyPalmer"
+  mastodon: "https://genart.social/@jeffpalmer"
 ---
