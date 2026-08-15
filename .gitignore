@@ -5,7 +5,6 @@ dist/
 
 # Local tooling output, not part of the site
 tmp/
-link-report.md
 
 .DS_Store
 .env
