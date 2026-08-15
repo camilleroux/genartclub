@@ -1,6 +1,6 @@
 ---
 name: "Anna Lucia"
-role: "Generative artist"
+tagline: "Generative artist"
 socials:
   instagram: "https://www.instagram.com/anna.lucia.codes"
   x: "https://twitter.com/annaluciacodes"

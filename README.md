@@ -32,7 +32,7 @@ A minimal file:
 ```markdown
 ---
 name: "Jane Doe"
-role: "Generative artist"
+tagline: "Generative artist"
 website: "https://example.com/"
 socials:
   x: "https://x.com/janedoe"
@@ -51,8 +51,10 @@ An optional short bio, in Markdown.
 - **File name** decides the URL, and nothing else: `jane-doe.md` is served at
   `/artists/jane-doe`. It is slugified from the name, and stays put once
   published so links keep working even if the name changes.
-- **`role`** is a sentence fragment and starts with a capital: `Generative
-  artist`, not `generative artist`. `location` and `pronouns` are optional.
+- **`tagline`** is the line under your name: a short description of your
+  practice, not a bio — the Markdown body below the frontmatter is for that. It
+  reads as a sentence fragment and starts with a capital: `Generative artist`,
+  not `generative artist`. `location` and `pronouns` are optional.
 - **`socials`** uses fixed keys, so the same network is never labelled two
   different ways: `instagram`, `x`, `bluesky`, `farcaster`, `mastodon`,
   `tiktok`, `youtube`, `reddit`, `telegram`, `discord`, `linkedin`, `github`.

@@ -1,7 +1,7 @@
 ---
 name: "edgardo"
 realName: "Edgardo Avilés-López"
-role: "Creative technologist & new media artist"
+tagline: "Creative technologist & new media artist"
 website: "https://eavl.co/"
 socials:
   x: "https://twitter.com/eaviles"

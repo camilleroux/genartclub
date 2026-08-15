@@ -391,7 +391,7 @@ img {
   border-bottom-color: var(--fg);
 }
 
-.row__role {
+.row__tagline {
   color: var(--muted);
   font-size: var(--text-base);
   margin-top: 0.15rem;
@@ -505,7 +505,7 @@ a:hover .links__text {
   line-height: 1.05;
 }
 
-.profile__role {
+.profile__tagline {
   color: var(--muted);
   font-size: var(--text-md);
   margin: 0;

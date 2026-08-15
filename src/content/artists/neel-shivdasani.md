@@ -1,6 +1,6 @@
 ---
 name: "Neel Shivdasani"
-role: "Generative artist"
+tagline: "Generative artist"
 website: "https://neel.sh/"
 socials:
   instagram: "https://www.instagram.com/neel.shivdasani/"

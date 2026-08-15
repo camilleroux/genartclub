@@ -1,6 +1,6 @@
 ---
 name: "Stefano Contiero"
-role: "(Generative) artist"
+tagline: "(Generative) artist"
 website: "https://stefanocontiero.com/"
 socials:
   instagram: "https://www.instagram.com/stefan_contiero/"

@@ -1,6 +1,6 @@
 ---
 name: "Florian Zumbrunn"
-role: "Generative artist"
+tagline: "Generative artist"
 website: "https://floz.fr/"
 socials:
   instagram: "https://www.instagram.com/florianzumbrunn/"

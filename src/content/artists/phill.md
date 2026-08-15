@@ -1,7 +1,7 @@
 ---
 name: "phill"
 realName: "Phill Pasqual"
-role: "Generative artist"
+tagline: "Generative artist"
 website: "https://www.phillpasqual.com/"
 socials:
   instagram: "https://www.instagram.com/furtherinterfaces/"

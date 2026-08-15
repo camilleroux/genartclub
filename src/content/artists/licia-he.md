@@ -1,6 +1,6 @@
 ---
 name: "Licia He"
-role: "Generative artist & plotter enthusiast"
+tagline: "Generative artist & plotter enthusiast"
 website: "https://eyesofpanda.com/"
 socials:
   x: "https://twitter.com/Licia_He"

@@ -1,7 +1,7 @@
 ---
 name: "jbarbeau.art"
 realName: "Jonathan Barbeau"
-role: "Generative artist"
+tagline: "Generative artist"
 website: "https://linktr.ee/jobarbo"
 socials:
   instagram: "https://www.instagram.com/jbarbeau.art/"

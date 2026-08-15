@@ -1,7 +1,7 @@
 ---
 name: "jimmykl"
 realName: "Jimmy Kirkus-Lamont"
-role: "Generative tools, pen plotting & printmaking"
+tagline: "Generative tools, pen plotting & printmaking"
 website: "https://jimmy.is/"
 socials:
   instagram: "https://www.instagram.com/jimmykl/"

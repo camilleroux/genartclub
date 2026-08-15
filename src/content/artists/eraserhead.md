@@ -1,7 +1,7 @@
 ---
 name: "eraserhead"
 realName: "Erfan Ashourioun"
-role: "Multimedia artist"
+tagline: "Multimedia artist"
 website: "https://erfanashourioun.wordpress.com/"
 socials:
   x: "https://twitter.com/erfanashorion"

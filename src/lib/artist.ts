@@ -23,7 +23,9 @@ export function personNode(artist: CollectionEntry<'artists'>, site: URL | undef
     url: page,
     // `name` is what they are known as, so the civil name is the alternate one.
     ...(data.realName ? { alternateName: data.realName } : {}),
-    ...(data.role ? { jobTitle: data.role } : {}),
+    // A tagline is a short description of the practice, which is what it maps to.
+    // `jobTitle` would read it as an occupation, which it is only most of the time.
+    ...(data.tagline ? { description: data.tagline } : {}),
     ...(data.location ? { homeLocation: { '@type': 'Place', name: data.location } } : {}),
     ...(sameAs.length ? { sameAs } : {}),
   };

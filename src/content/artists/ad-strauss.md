@@ -1,7 +1,7 @@
 ---
 name: "ad_strauss"
 realName: "Andrew Strauss"
-role: "Generative artist / designer & plotter artist"
+tagline: "Generative artist / designer & plotter artist"
 website: "https://www.studiostrauss.com.au/"
 socials:
   instagram: "https://www.instagram.com/ad_strauss/"

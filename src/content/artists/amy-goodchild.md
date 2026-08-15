@@ -1,6 +1,6 @@
 ---
 name: "Amy Goodchild"
-role: "Generative, installation & interactive artist"
+tagline: "Generative, installation & interactive artist"
 website: "https://www.amygoodchild.com/"
 socials:
   instagram: "https://www.instagram.com/amy_goodchild/"

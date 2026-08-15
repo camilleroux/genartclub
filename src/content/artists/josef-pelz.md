@@ -1,6 +1,6 @@
 ---
 name: "Josef Pelz"
-role: "Generative artist"
+tagline: "Generative artist"
 website: "https://josefpelz.com/"
 socials:
   instagram: "https://www.instagram.com/josefpelz/"

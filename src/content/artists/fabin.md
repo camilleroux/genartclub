@@ -1,7 +1,7 @@
 ---
 name: "fabin"
 realName: "Fabin Rasheed"
-role: "New media art"
+tagline: "New media art"
 website: "https://nurecas.com/"
 socials:
   instagram: "https://instagram.com/nurecas"

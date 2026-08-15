@@ -1,6 +1,6 @@
 ---
 name: "Camille Roux"
-role: "Algorithmic artist & creative coder"
+tagline: "Algorithmic artist & creative coder"
 location: "Montpellier, France"
 website: "https://art.camilleroux.com/"
 socials:

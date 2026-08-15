@@ -1,7 +1,7 @@
 ---
 name: "jenslabs"
 realName: "Jens Clarholm"
-role: "Generative art, analogue & digital. Drawing machine builder"
+tagline: "Generative art, analogue & digital. Drawing machine builder"
 website: "https://linktr.ee/jenslabs"
 socials:
   instagram: "https://www.instagram.com/jenslabsbuilds/"

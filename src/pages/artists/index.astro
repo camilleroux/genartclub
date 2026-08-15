@@ -80,7 +80,7 @@ const description = `The ${artists.length} members of the ${ORG_NAME}, with link
                   <p class="row__name">
                         <a href={artistPath(artist.id)}>{artist.data.name}</a>
                   </p>
-                  {artist.data.role && <p class="row__role">{artist.data.role}</p>}
+                  {artist.data.tagline && <p class="row__tagline">{artist.data.tagline}</p>}
                 </div>
                 <ArtistLinks
                   website={artist.data.website}

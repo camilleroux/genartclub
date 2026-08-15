@@ -1,7 +1,7 @@
 ---
 name: "willstall"
 realName: "William Stallwood"
-role: "Generative artist, shader lover, & game designer"
+tagline: "Generative artist, shader lover, & game designer"
 website: "http://willstall.com/"
 socials:
   instagram: "https://www.instagram.com/willstall/"

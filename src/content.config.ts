@@ -76,10 +76,11 @@ const artists = defineCollection({
          * want it on record. Nothing to fill in when `name` is already it.
          */
         realName: z.string().optional(),
-        role: z
+        /** The line under the name: a short description of the practice, not a bio. */
+        tagline: z
           .string()
-          .refine((role) => /^[^\p{L}]*\p{Lu}/u.test(role), {
-            error: 'Roles read as sentence fragments here, so start with a capital.',
+          .refine((tagline) => /^[^\p{L}]*\p{Lu}/u.test(tagline), {
+            error: 'Taglines read as sentence fragments here, so start with a capital.',
           })
           .optional(),
         location: z.string().optional(),

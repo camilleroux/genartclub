@@ -1,6 +1,6 @@
 ---
 name: "Rev Dan Catt"
-role: "Contemporary printmaker, pen plotters & algorithms"
+tagline: "Contemporary printmaker, pen plotters & algorithms"
 website: "https://revdancatt.com/"
 socials:
   x: "https://twitter.com/revdancatt"

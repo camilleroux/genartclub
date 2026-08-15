@@ -1,6 +1,6 @@
 ---
 name: "Krankarta"
-role: "Generative artist"
+tagline: "Generative artist"
 website: "https://linktr.ee/KRANKARTA"
 socials:
   x: "https://twitter.com/krankarta"

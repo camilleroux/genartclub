@@ -1,7 +1,7 @@
 ---
 name: "code_rgb"
 realName: "Chris Barber"
-role: "Generative artist & creative coder"
+tagline: "Generative artist & creative coder"
 website: "https://linktr.ee/chrisbarber"
 socials:
   x: "https://twitter.com/code_rgb "

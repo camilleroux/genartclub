@@ -24,10 +24,10 @@ body:
       description: Only if the name above is an alias and you want your own name shown next to it.
       placeholder: Jane Doe
   - type: input
-    id: role
+    id: tagline
     attributes:
-      label: Role
-      description: A short description of your practice.
+      label: Tagline
+      description: The line under your name — a short description of your practice, not a bio.
       placeholder: Generative artist & creative coder
   - type: input
     id: location

@@ -1,6 +1,6 @@
 ---
 name: "Jeff Palmer"
-role: "Artist / programmer"
+tagline: "Artist / programmer"
 website: "https://jpalmer.art/"
 socials:
   instagram: "https://www.instagram.com/jpalmer.art/"
