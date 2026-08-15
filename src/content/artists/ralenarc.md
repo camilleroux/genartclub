@@ -1,6 +1,6 @@
 ---
 name: "RalenArc"
-role: "generative artist"
+role: "Generative artist"
 location: "New Jersey, USA"
 website: "https://ralenarc.com/"
 socials:

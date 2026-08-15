@@ -50,33 +50,65 @@ export const SOCIAL_LABELS: Record<SocialKey, string> = {
  */
 const MAX_ARTWORKS = 10;
 
+/** Ignores case, spacing and punctuation: "Jeff Palmer" and "jeffpalmer" fold alike. */
+const fold = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, '');
+
 const artists = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/artists' }),
   schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      // Club nickname, when it differs from the name.
-      handle: z.string().optional(),
-      role: z.string().optional(),
-      location: z.string().optional(),
-      pronouns: z.string().optional(),
-      website: z.url().optional(),
-      socials: socials.optional(),
-      // Plain list of URLs: known art platforms are matched by domain.
-      platforms: z.array(z.url()).optional(),
-      artworks: z
-        .array(
-          z.object({
-            image: image(),
-            title: z.string().optional(),
-            year: z.number().int().min(1950).max(2100).optional(),
+    z
+      .object({
+        /**
+         * The name the artist is credited under, on every page that mentions
+         * them: their own name, or the alias they sign their work with. This is
+         * the displayed one, so it is written the way they write it.
+         */
+        name: z
+          .string()
+          .refine((name) => !name.startsWith('@'), {
+            error: 'Write the name as it is signed, without the leading @.',
+          })
+          .refine((name) => name.trim() === name, {
+            error: 'Remove the surrounding whitespace.',
           }),
-        )
-        .max(MAX_ARTWORKS, {
-          error: `Please keep it to ${MAX_ARTWORKS} artworks: the home page shows one work per artist anyway.`,
-        })
-        .optional(),
-    }),
+        /**
+         * The civil name of an artist who signs with an alias, for those who
+         * want it on record. Nothing to fill in when `name` is already it.
+         */
+        realName: z.string().optional(),
+        role: z
+          .string()
+          .refine((role) => /^[^\p{L}]*\p{Lu}/u.test(role), {
+            error: 'Roles read as sentence fragments here, so start with a capital.',
+          })
+          .optional(),
+        location: z.string().optional(),
+        pronouns: z.string().optional(),
+        website: z.url().optional(),
+        socials: socials.optional(),
+        // Plain list of URLs: known art platforms are matched by domain.
+        platforms: z.array(z.url()).optional(),
+        artworks: z
+          .array(
+            z.object({
+              image: image(),
+              title: z.string().optional(),
+              year: z.number().int().min(1950).max(2100).optional(),
+            }),
+          )
+          .max(MAX_ARTWORKS, {
+            error: `Please keep it to ${MAX_ARTWORKS} artworks: the home page shows one work per artist anyway.`,
+          })
+          .optional(),
+      })
+      // An unknown key is a typo or a field that no longer exists, and silently
+      // dropping it would publish a page missing what the contributor wrote.
+      .strict()
+      .refine((artist) => !artist.realName || fold(artist.realName) !== fold(artist.name), {
+        path: ['realName'],
+        error:
+          'realName repeats name. It is only for artists who sign with an alias: drop it, and write name the way you sign.',
+      }),
 });
 
 export const collections = { artists };

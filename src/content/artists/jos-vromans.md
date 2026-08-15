@@ -1,6 +1,6 @@
 ---
 name: "Jos Vromans"
-role: "generative artist & math artist"
+role: "Generative artist & math artist"
 website: "http://www.josvromans.com/"
 socials:
   instagram: "https://www.instagram.com/jos.vromans/"

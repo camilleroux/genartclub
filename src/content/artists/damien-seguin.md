@@ -1,6 +1,6 @@
 ---
 name: "Damien Seguin"
-role: "generative artist"
+role: "Generative artist"
 website: "https://dmnsgn.me/"
 socials:
   instagram: "https://www.instagram.com/dmnsgn_art/"

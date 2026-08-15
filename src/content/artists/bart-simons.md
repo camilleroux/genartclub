@@ -1,6 +1,6 @@
 ---
 name: "Bart Simons"
-role: "generative artist"
+role: "Generative artist"
 website: "https://www.bartsimons.com/"
 socials:
   instagram: "https://www.instagram.com/unordered.list/"

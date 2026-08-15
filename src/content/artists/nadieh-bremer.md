@@ -1,6 +1,6 @@
 ---
 name: "Nadieh Bremer"
-role: "generative & data artist"
+role: "Generative & data artist"
 website: "https://www.visualcinnamon.com/"
 socials:
   instagram: "https://www.instagram.com/NadiehBremer/"

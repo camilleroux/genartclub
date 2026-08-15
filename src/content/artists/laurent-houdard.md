@@ -1,6 +1,6 @@
 ---
 name: "Laurent Houdard"
-role: "generative artist"
+role: "Generative artist"
 website: "https://laurent.houdard.net/"
 socials:
   instagram: "https://www.instagram.com/cables.and.pixels/"

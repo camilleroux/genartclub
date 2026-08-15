@@ -1,7 +1,7 @@
 ---
-name: "Fabin Rasheed"
-handle: "fabin"
-role: "new media art"
+name: "fabin"
+realName: "Fabin Rasheed"
+role: "New media art"
 website: "https://nurecas.com/"
 socials:
   instagram: "https://instagram.com/nurecas"

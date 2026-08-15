@@ -1,7 +1,6 @@
 ---
 name: "Jeff Palmer"
-handle: "jeff-palmer"
-role: "Artist / Programmer"
+role: "Artist / programmer"
 website: "https://jpalmer.art/"
 socials:
   instagram: "https://www.instagram.com/jpalmer.art/"

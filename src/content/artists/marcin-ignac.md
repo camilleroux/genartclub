@@ -1,6 +1,6 @@
 ---
 name: "Marcin Ignac"
-role: "generative & data artist"
+role: "Generative & data artist"
 website: "http://marcinignac.com/"
 socials:
   instagram: "https://instagram.com/variablestudio"

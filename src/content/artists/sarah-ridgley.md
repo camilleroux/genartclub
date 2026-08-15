@@ -1,6 +1,6 @@
 ---
 name: "Sarah Ridgley"
-role: "generative artist"
+role: "Generative artist"
 website: "https://sarahridgley.com/"
 socials:
   x: "https://twitter.com/sarah_ridgley"

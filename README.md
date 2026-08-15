@@ -32,8 +32,7 @@ A minimal file:
 ```markdown
 ---
 name: "Jane Doe"
-handle: "janedoe"
-role: "generative artist"
+role: "Generative artist"
 website: "https://example.com/"
 socials:
   x: "https://x.com/janedoe"
@@ -43,9 +42,17 @@ socials:
 An optional short bio, in Markdown.
 ```
 
-- **File name** is the handle (or the name when there is no handle), slugified:
-  `anna lucia` becomes `anna-lucia.md` and the page URL `/artists/anna-lucia`.
-- **`name`** is required. `handle`, `role`, `location` and `pronouns` are optional.
+- **`name`** is required, and is the only name displayed: your own name, or the
+  alias you sign your work with, written the way you write it. An artist who
+  signs with an alias can add their civil name as `realName`, shown next to it —
+  leave it out when `name` is already your name. The build rejects a `realName`
+  that only repeats `name`, so `name: "Jane Doe"` with `realName: "janedoe"` is
+  an error, not a second entry.
+- **File name** decides the URL, and nothing else: `jane-doe.md` is served at
+  `/artists/jane-doe`. It is slugified from the name, and stays put once
+  published so links keep working even if the name changes.
+- **`role`** is a sentence fragment and starts with a capital: `Generative
+  artist`, not `generative artist`. `location` and `pronouns` are optional.
 - **`socials`** uses fixed keys, so the same network is never labelled two
   different ways: `instagram`, `x`, `bluesky`, `farcaster`, `mastodon`,
   `tiktok`, `youtube`, `reddit`, `telegram`, `discord`, `linkedin`, `github`.

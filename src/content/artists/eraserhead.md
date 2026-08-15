@@ -1,7 +1,7 @@
 ---
-name: "Erfan Ashourioun"
-handle: "eraserhead"
-role: "multimedia artist"
+name: "eraserhead"
+realName: "Erfan Ashourioun"
+role: "Multimedia artist"
 website: "https://erfanashourioun.wordpress.com/"
 socials:
   x: "https://twitter.com/erfanashorion"

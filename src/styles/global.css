@@ -511,12 +511,6 @@ a:hover .links__text {
   margin: 0;
 }
 
-/* Roles are written lowercase in the content files; a heading position wants
-   a capital, without forcing title case on the whole line. */
-.profile__role::first-letter {
-  text-transform: uppercase;
-}
-
 .profile__meta {
   font-family: var(--font-mono);
   font-size: var(--text-sm);

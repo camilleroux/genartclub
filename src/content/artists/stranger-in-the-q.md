@@ -1,7 +1,7 @@
 ---
-name: "Konstantin"
-handle: "Stranger in the Q"
-role: "generative art, algorithms (webgl, canvas2d)"
+name: "Stranger in the Q"
+realName: "Konstantin"
+role: "Generative art, algorithms (webgl, canvas2d)"
 website: "https://strangerintheq.github.io/?p=DNCS"
 socials:
   instagram: "https://www.instagram.com/stranger_in_the_q/"

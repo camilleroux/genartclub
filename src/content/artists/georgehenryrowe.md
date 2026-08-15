@@ -1,7 +1,6 @@
 ---
 name: "George Henry Rowe"
-handle: "georgehenryrowe"
-role: "generative artist"
+role: "Generative artist"
 website: "https://www.georgehenryrowe.co.uk/"
 socials:
   instagram: "https://www.instagram.com/georgehenryrowe/"

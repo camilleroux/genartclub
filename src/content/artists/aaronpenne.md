@@ -1,7 +1,6 @@
 ---
 name: "Aaron Penne"
-handle: "aaronpenne"
-role: "visual artist"
+role: "Visual artist"
 website: "https://www.aaronpenne.io/"
 socials:
   x: "https://twitter.com/aaronpenne"

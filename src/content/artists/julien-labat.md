@@ -1,6 +1,6 @@
 ---
 name: "Julien Labat"
-role: "generative artist"
+role: "Generative artist"
 website: "https://linktr.ee/julienlabat"
 socials:
   instagram: "https://www.instagram.com/julabat/"

@@ -1,7 +1,6 @@
 ---
 name: "Krankarta"
-handle: "KRANKARTA"
-role: "generative artist"
+role: "Generative artist"
 website: "https://linktr.ee/KRANKARTA"
 socials:
   x: "https://twitter.com/krankarta"

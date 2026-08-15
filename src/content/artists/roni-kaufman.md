@@ -1,6 +1,6 @@
 ---
 name: "Roni Kaufman"
-role: "creative coder & generative artist"
+role: "Creative coder & generative artist"
 website: "https://ronikaufman.github.io/"
 socials:
   x: "https://twitter.com/KaufmanRoni"

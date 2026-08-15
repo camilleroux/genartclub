@@ -1,6 +1,6 @@
 ---
 name: "cyberia"
-role: "generative / net artist"
+role: "Generative / net artist"
 website: "https://www.are.na/cyberia-_/generative-art-cyberia"
 socials:
   instagram: "https://www.instagram.com/_cyber.ia/"

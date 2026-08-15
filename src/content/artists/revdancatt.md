@@ -1,7 +1,6 @@
 ---
 name: "Rev Dan Catt"
-handle: "revdancatt"
-role: "contemporary printmaker, pen plotters & algorithms"
+role: "Contemporary printmaker, pen plotters & algorithms"
 website: "https://revdancatt.com/"
 socials:
   x: "https://twitter.com/revdancatt"

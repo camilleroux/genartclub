@@ -1,6 +1,6 @@
 ---
 name: "Melissa Wiederrecht"
-role: "generative artist"
+role: "Generative artist"
 website: "https://www.melissawiederrecht.com/"
 socials:
   instagram: "https://www.instagram.com/melissawiederrecht"

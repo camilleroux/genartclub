@@ -18,8 +18,10 @@ will turn it into a pull request.
 4. Run `npm install` then `npm run build`. The build validates every artist file
    against the schema in `src/content.config.ts`, so a typo or an unknown field
    fails the build with a clear message instead of breaking the site.
-5. Open a pull request. Cloudflare posts a preview URL on it — check your page
-   there before asking for a review.
+5. Open a pull request. It is built automatically, so you get the same message
+   here if something is off. Pull requests from a branch of this repository also
+   get a Cloudflare preview URL; those from a fork do not, so check your page
+   locally with `npm run dev`.
 
 ## What we ask
 
@@ -28,6 +30,10 @@ will turn it into a pull request.
   request adding someone who has not been co-opted will be declined.
 - **Only add yourself, or fix obvious errors.** If you want to add someone else,
   please make sure they are fine with it.
+- **`name` is how you are credited**, and the only name shown: your own name or
+  the alias you sign with, whichever you want readers to see. It is not an
+  identifier — the URL comes from the file name and does not change with it. Sign
+  with an alias and want your civil name on record too? Add `realName`.
 - **No email addresses.** They get scraped; use your website or a social profile.
 - **Links must work.** Dead links are removed when we notice them.
 - **Images:** JPEG, PNG or WebP, with a longest side between 1200 and 2560px and

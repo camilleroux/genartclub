@@ -1,7 +1,7 @@
 ---
-name: "Jeff"
-handle: "ippsketch"
-role: "generative artist"
+name: "ippsketch"
+realName: "Jeff"
+role: "Generative artist"
 website: "https://ippsketch.com/"
 socials:
   instagram: "https://www.instagram.com/ippsketch/"

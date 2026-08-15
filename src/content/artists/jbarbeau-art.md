@@ -1,7 +1,7 @@
 ---
-name: "Jonathan Barbeau"
-handle: "jbarbeau.art"
-role: "generative artist"
+name: "jbarbeau.art"
+realName: "Jonathan Barbeau"
+role: "Generative artist"
 website: "https://linktr.ee/jobarbo"
 socials:
   instagram: "https://www.instagram.com/jbarbeau.art/"

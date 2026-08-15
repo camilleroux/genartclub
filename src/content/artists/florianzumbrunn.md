@@ -1,7 +1,6 @@
 ---
 name: "Florian Zumbrunn"
-handle: "florianzumbrunn"
-role: "generative artist"
+role: "Generative artist"
 website: "https://floz.fr/"
 socials:
   instagram: "https://www.instagram.com/florianzumbrunn/"

@@ -1,7 +1,6 @@
 ---
 name: "Licia He"
-handle: "licia he"
-role: "generative artist & plotter enthusiast"
+role: "Generative artist & plotter enthusiast"
 website: "https://eyesofpanda.com/"
 socials:
   x: "https://twitter.com/Licia_He"

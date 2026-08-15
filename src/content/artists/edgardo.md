@@ -1,7 +1,7 @@
 ---
-name: "Edgardo Avilés-López"
-handle: "edgardo"
-role: "creative technologist & new media artist"
+name: "edgardo"
+realName: "Edgardo Avilés-López"
+role: "Creative technologist & new media artist"
 website: "https://eavl.co/"
 socials:
   x: "https://twitter.com/eaviles"

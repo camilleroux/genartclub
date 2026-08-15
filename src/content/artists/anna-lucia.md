@@ -1,7 +1,6 @@
 ---
 name: "Anna Lucia"
-handle: "anna lucia"
-role: "generative artist"
+role: "Generative artist"
 socials:
   instagram: "https://www.instagram.com/anna.lucia.codes"
   x: "https://twitter.com/annaluciacodes"

@@ -1,7 +1,7 @@
 ---
-name: "Tyler Boswell"
-handle: "teaboswell"
-role: "generative artist"
+name: "teaboswell"
+realName: "Tyler Boswell"
+role: "Generative artist"
 website: "https://linktr.ee/teaboswell"
 socials:
   instagram: "https://www.instagram.com/teaboswell_/"

@@ -1,7 +1,7 @@
 ---
-name: "Rich Poole"
-handle: "rich"
-role: "generative artist"
+name: "rich"
+realName: "Rich Poole"
+role: "Generative artist"
 socials:
   x: "https://twitter.com/rich__poole"
 ---

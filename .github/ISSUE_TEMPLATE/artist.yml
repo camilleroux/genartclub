@@ -13,22 +13,22 @@ body:
     id: name
     attributes:
       label: Name
-      description: The name to display.
+      description: How you want to be credited — your own name, or the alias you sign your work with.
       placeholder: Jane Doe
     validations:
       required: true
   - type: input
-    id: handle
+    id: realName
     attributes:
-      label: Handle
-      description: Your nickname in the club, if it differs from your name.
-      placeholder: janedoe
+      label: Real name
+      description: Only if the name above is an alias and you want your own name shown next to it.
+      placeholder: Jane Doe
   - type: input
     id: role
     attributes:
       label: Role
       description: A short description of your practice.
-      placeholder: generative artist & creative coder
+      placeholder: Generative artist & creative coder
   - type: input
     id: location
     attributes:

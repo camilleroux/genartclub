@@ -1,7 +1,7 @@
 ---
-name: "Abhishek Das"
-handle: "abhshkdz"
-role: "generative art, AI art & photography"
+name: "abhshkdz"
+realName: "Abhishek Das"
+role: "Generative art, AI art & photography"
 website: "https://abhishekdas.com/"
 socials:
   instagram: "https://instagram.com/abhshkdz"

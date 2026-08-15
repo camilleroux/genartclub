@@ -1,6 +1,6 @@
 ---
-name: "Lia Coleman"
-handle: "liacole"
+name: "liacole"
+realName: "Lia Coleman"
 role: "AI artist"
 website: "https://www.liacoleman.com/"
 socials:

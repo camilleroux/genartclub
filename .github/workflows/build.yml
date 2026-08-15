@@ -1,0 +1,25 @@
+name: Build
+
+# Contributions arrive from forks, where Cloudflare does not build a preview, so
+# without this nothing would check a pull request before it lands on main.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      # Validates every artist file against the schema and the image budget, and
+      # reports the same messages a contributor sees locally.
+      - run: npm run build

@@ -1,6 +1,6 @@
 ---
 name: "r4v3n"
-role: "generative artist"
+role: "Generative artist"
 website: "https://linktr.ee/r4v3n_art"
 socials:
   x: "https://twitter.com/r4v3n_art"

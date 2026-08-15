@@ -1,6 +1,6 @@
 ---
 name: "Matthieu Segret"
-role: "generative artist"
+role: "Generative artist"
 website: "https://immutablecollective.art/matthieu-segret/"
 socials:
   instagram: "https://www.instagram.com/matthieuart/"

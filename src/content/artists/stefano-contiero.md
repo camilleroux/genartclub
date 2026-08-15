@@ -1,7 +1,6 @@
 ---
 name: "Stefano Contiero"
-handle: "stefano_contiero"
-role: "(generative) artist"
+role: "(Generative) artist"
 website: "https://stefanocontiero.com/"
 socials:
   instagram: "https://www.instagram.com/stefan_contiero/"
