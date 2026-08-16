@@ -5,5 +5,5 @@ tagline: "Generative artist"
 website: "http://ylegall.github.io/"
 socials:
   instagram: "https://www.instagram.com/ylegall/"
-  x: "https://twitter.com/Yann_LeGall"
+  x: "https://x.com/Yann_LeGall"
 ---

@@ -4,5 +4,5 @@ realName: "Matthijs Keuper"
 tagline: "Generative artist & generative wooden puzzles"
 website: "https://www.codeandwood.com/"
 socials:
-  x: "https://twitter.com/codeandwood"
+  x: "https://x.com/codeandwood"
 ---

@@ -3,7 +3,7 @@ name: "Roni Kaufman"
 tagline: "Creative coder & generative artist"
 website: "https://ronikaufman.github.io/"
 socials:
-  x: "https://twitter.com/KaufmanRoni"
+  x: "https://x.com/KaufmanRoni"
 artworks:
   - image: "../../assets/artworks/roni-kaufman/homage-de-bridget-riley.jpg"
     title: "Homage de Bridget Riley"

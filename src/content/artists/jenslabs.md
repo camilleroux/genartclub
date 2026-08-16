@@ -5,5 +5,5 @@ tagline: "Generative art, analogue & digital. Drawing machine builder"
 website: "https://linktr.ee/jenslabs"
 socials:
   instagram: "https://www.instagram.com/jenslabsbuilds/"
-  x: "https://twitter.com/jenslabs"
+  x: "https://x.com/jenslabs"
 ---

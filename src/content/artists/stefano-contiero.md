@@ -4,5 +4,5 @@ tagline: "(Generative) artist"
 website: "https://stefanocontiero.com/"
 socials:
   instagram: "https://www.instagram.com/stefan_contiero/"
-  x: "https://twitter.com/stefan_contiero"
+  x: "https://x.com/stefan_contiero"
 ---

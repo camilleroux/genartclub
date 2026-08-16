@@ -5,5 +5,5 @@ tagline: "Generative art, real-time graphics, interactive artwork, with a focus 
 website: "https://www.sabin.art/"
 socials:
   instagram: "https://www.instagram.com/artbysabin/"
-  x: "https://twitter.com/artbysabin"
+  x: "https://x.com/artbysabin"
 ---
