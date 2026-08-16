@@ -1,0 +1,22 @@
+version: 2
+
+# The site can go months without a commit, which is exactly how a known
+# vulnerability sits unnoticed in a dependency. Every pull request opened here
+# is built by the Build workflow, so a breaking bump shows up before the merge.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    # Patches and minors are the boring ones; grouping them keeps a quiet week
+    # to a single pull request instead of six.
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
