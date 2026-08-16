@@ -28,9 +28,6 @@ const pageTitle = brandedTitle ? `${title} — ${ORG_SHORT_NAME}` : title;
 
 const canonical = new URL(cleanPathname(Astro.url.pathname), Astro.site).href;
 const ogImage = new URL('/images/og.png', Astro.site).href;
-// Set PUBLIC_CF_BEACON_TOKEN in the production environment only, so forks and
-// local development never send analytics.
-const beacon = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
 
 <!doctype html>
@@ -55,16 +52,6 @@ const beacon = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <meta name="twitter:card" content="summary_large_image" />
 
     {schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}
-    {
-      beacon && (
-        <script
-          is:inline
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon={JSON.stringify({ token: beacon })}
-        />
-      )
-    }
   </head>
   <body>
     <Nav />

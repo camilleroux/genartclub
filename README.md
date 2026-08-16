@@ -116,9 +116,10 @@ One-time setup in the Cloudflare dashboard:
 1. Add `www.genartclub.com` as a custom domain on the Pages project.
 2. Add a redirect rule sending `genartclub.com/*` to
    `https://www.genartclub.com/$1` with status 301.
-3. Optional: create a Web Analytics site and set `PUBLIC_CF_BEACON_TOKEN` as a
-   production environment variable. Without it, no analytics script is emitted,
-   so forks and local development stay clean.
+3. Optional: enable Web Analytics from the Metrics tab of the Pages project.
+   Cloudflare then injects its beacon into the deployed HTML itself, so the
+   repository carries no analytics code and forks and local builds stay clean.
+   Adding the snippet by hand on top of that would only count every visit twice.
 
 Legacy URLs from the previous site are redirected in
 [`public/_redirects`](public/_redirects).
