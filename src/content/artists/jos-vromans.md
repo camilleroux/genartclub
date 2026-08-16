@@ -1,7 +1,7 @@
 ---
 name: "Jos Vromans"
 tagline: "Generative artist & math artist"
-website: "http://www.josvromans.com/"
+website: "https://www.josvromans.art/"
 socials:
   instagram: "https://www.instagram.com/jos.vromans/"
   x: "https://x.com/josvromans"

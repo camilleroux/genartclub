@@ -3,6 +3,6 @@ name: "Marcin Ignac"
 tagline: "Generative & data artist"
 website: "http://marcinignac.com/"
 socials:
-  instagram: "https://instagram.com/variablestudio"
+  instagram: "https://www.instagram.com/variablestudio"
   x: "https://x.com/marcinignac"
 ---

@@ -4,7 +4,7 @@ tagline: "Generative artist"
 location: "New Jersey, USA"
 website: "https://ralenarc.com/"
 socials:
-  instagram: "https://instagram.com/ralenarc"
+  instagram: "https://www.instagram.com/ralenarc"
   x: "https://x.com/RalenArc"
   github: "https://github.com/RalenArc"
 platforms:
