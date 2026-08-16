@@ -21,7 +21,10 @@ will turn it into a pull request.
 4. Run `npm install` then `npm run build`. The build validates every artist file
    against the schema in `src/content.config.ts`, so a typo or an unknown field
    fails the build with a clear message instead of breaking the site.
-5. Open a pull request. It is built automatically, so you get the same message
+5. If you touched anything outside `src/content/artists/`, run `npm run format`.
+   Artist files are left alone by the formatter, so nothing reshapes your entry
+   behind your back.
+6. Open a pull request. It is built automatically, so you get the same message
    here if something is off. Pull requests from a branch of this repository also
    get a Cloudflare preview URL; those from a fork do not, so check your page
    locally with `npm run dev`.

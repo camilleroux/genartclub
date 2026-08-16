@@ -1,0 +1,12 @@
+# Artist files belong to the artists. Prettier would rewrite their YAML and
+# rewrap their bio, turning a one-line correction into an unreadable diff.
+src/content/artists/
+
+# prettier-plugin-astro 0.14.1 throws a SyntaxError on a <script> nested inside
+# a {condition && (...)} block, which is where the strip builds itself. Verified
+# with a minimal case: the same script parses fine outside the conditional.
+src/components/Strip.astro
+
+dist/
+.astro/
+package-lock.json

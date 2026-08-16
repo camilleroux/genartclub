@@ -1,0 +1,15 @@
+# For editors that do not read the Prettier config. Kept in agreement with
+# .prettierrc.json: if one changes, so does the other.
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+# Two trailing spaces are a line break in Markdown.
+trim_trailing_whitespace = false

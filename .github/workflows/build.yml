@@ -20,6 +20,9 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      # Before the build, so a formatting slip is reported in seconds rather
+      # than after the images have been processed.
+      - run: npm run format:check
       # Validates every artist file against the schema and the image budget, and
       # reports the same messages a contributor sees locally.
       - run: npm run build
