@@ -1,6 +1,6 @@
 ---
 name: "Agoston Nagy"
-tagline: "Generative artist"
+tagline: "Algorithmic art, intuitive systems, realtime sonification with code"
 website: "https://entangled.tools/"
 socials:
   instagram: "https://www.instagram.com/0xstc/"
