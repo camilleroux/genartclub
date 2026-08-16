@@ -87,9 +87,11 @@ the random rotation of the home page strip, where it is cropped to fit the band
 per artist at a time, so adding ten does not crowd anyone out. `title` and
 `year` are optional.
 
-Budget, enforced by the build: at most 10 artworks per artist, longest side
-between 1200 and 2560px, under 2MB each. Astro derives every smaller variant, so
-a bigger file buys nothing and costs build time for everyone.
+Budget, enforced by the build: at most 10 artworks per artist, longest side at
+most 2560px, under 2MB each. Astro derives every smaller variant, so a bigger
+file buys nothing and costs build time for everyone. Narrower than 1200px is
+allowed and only reported as a note, since the paragraph above is the only thing
+it changes.
 
 ## Project structure
 

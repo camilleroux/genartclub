@@ -24,7 +24,10 @@ will turn it into a pull request.
 5. If you touched anything outside `src/content/artists/`, run `npm run format`.
    Artist files are left alone by the formatter, so nothing reshapes your entry
    behind your back.
-6. Open a pull request. It is built automatically, so you get the same message
+6. Leave `package-lock.json` out of your commit. `npm install` rewrites it
+   depending on your npm version and your machine, and those changes belong to
+   nobody's entry: `git checkout -- package-lock.json` before committing.
+7. Open a pull request. It is built automatically, so you get the same message
    here if something is off. Pull requests from a branch of this repository also
    get a Cloudflare preview URL; those from a fork do not, so check your page
    locally with `npm run dev`.
@@ -42,12 +45,12 @@ will turn it into a pull request.
   with an alias and want your civil name on record too? Add `realName`.
 - **No email addresses.** They get scraped; use your website or a social profile.
 - **Links must work.** Dead links are removed when we notice them.
-- **Images:** JPEG, PNG or WebP, with a longest side between 1200 and 2560px and
-  under 2MB. Astro generates every smaller variant, so there is nothing to gain
-  from a larger file: the site never displays an artwork wider than about 1300px,
-  and oversized sources only slow the build and bloat the repository. `npm run
-build` refuses anything over budget, and warns when an image is under 1200px
-  wide, since those stay on your page but never join the home page strip.
+- **Images:** JPEG, PNG or WebP, longest side at most 2560px, under 2MB each.
+  `npm run build` refuses anything past those two limits. Astro generates every
+  smaller variant, so a larger file buys nothing — the site never displays an
+  artwork wider than about 1300px — while slowing every build and weighing on
+  every clone. An image narrower than 1200px is accepted and only gets a note:
+  it stays on your page but never joins the home page band.
 - **Up to 10 artworks each.** The home page shows one work per artist at a time,
   so more would not give you more visibility.
 - **Keep the file in English**, like the rest of the repository.
