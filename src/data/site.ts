@@ -32,4 +32,3 @@ export function organization(site: URL | undefined) {
     url: new URL('/', site).href,
   };
 }
-

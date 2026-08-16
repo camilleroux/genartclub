@@ -50,8 +50,8 @@ const description = `The ${artists.length} members of the ${ORG_NAME}, with link
     <section class="section--tight">
       <h1 class="lede lede--small">Artists</h1>
       <p class="prose mt-2">
-        {artists.length} members of the club listed here. Something missing or out
-        of date? Anyone can send a fix.
+        {artists.length} members of the club listed here. Something missing or out of date? Anyone can
+        send a fix.
       </p>
     </section>
 
@@ -78,15 +78,11 @@ const description = `The ${artists.length} members of the ${ORG_NAME}, with link
               <article class="row">
                 <div>
                   <p class="row__name">
-                        <a href={artistPath(artist.id)}>{artist.data.name}</a>
+                    <a href={artistPath(artist.id)}>{artist.data.name}</a>
                   </p>
                   {artist.data.tagline && <p class="row__tagline">{artist.data.tagline}</p>}
                 </div>
-                <ArtistLinks
-                  website={artist.data.website}
-                  socials={artist.data.socials}
-                  compact
-                />
+                <ArtistLinks website={artist.data.website} socials={artist.data.socials} compact />
               </article>
             ))}
           </div>

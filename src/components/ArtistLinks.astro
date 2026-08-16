@@ -39,7 +39,13 @@ const iconSize = stacked ? 22 : 18;
     }
     {
       orderedSocials.map(({ key, url }) => (
-        <a href={url} target="_blank" rel="noopener me" title={SOCIAL_LABELS[key]} aria-label={SOCIAL_LABELS[key]}>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener me"
+          title={SOCIAL_LABELS[key]}
+          aria-label={SOCIAL_LABELS[key]}
+        >
           <SocialIcon network={key} size={iconSize} />
         </a>
       ))

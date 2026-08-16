@@ -54,15 +54,7 @@ const beacon = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    {
-      schema && (
-        <script
-          type="application/ld+json"
-          is:inline
-          set:html={JSON.stringify(schema)}
-        />
-      )
-    }
+    {schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}
     {
       beacon && (
         <script

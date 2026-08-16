@@ -46,7 +46,7 @@ will turn it into a pull request.
   under 2MB. Astro generates every smaller variant, so there is nothing to gain
   from a larger file: the site never displays an artwork wider than about 1300px,
   and oversized sources only slow the build and bloat the repository. `npm run
-  build` refuses anything over budget, and warns when an image is under 1200px
+build` refuses anything over budget, and warns when an image is under 1200px
   wide, since those stay on your page but never join the home page strip.
 - **Up to 10 artworks each.** The home page shows one work per artist at a time,
   so more would not give you more visibility.

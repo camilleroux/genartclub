@@ -31,12 +31,12 @@ A minimal file:
 
 ```markdown
 ---
-name: "Jane Doe"
-tagline: "Generative artist"
-website: "https://example.com/"
+name: 'Jane Doe'
+tagline: 'Generative artist'
+website: 'https://example.com/'
 socials:
-  x: "https://x.com/janedoe"
-  instagram: "https://instagram.com/janedoe"
+  x: 'https://x.com/janedoe'
+  instagram: 'https://instagram.com/janedoe'
 ---
 
 An optional short bio, in Markdown.
@@ -76,8 +76,8 @@ Put the image in `src/assets/artworks/<slug>/` and declare it:
 
 ```yaml
 artworks:
-  - image: "../../assets/artworks/janedoe/my-piece.jpg"
-    title: "My piece"
+  - image: '../../assets/artworks/janedoe/my-piece.jpg'
+    title: 'My piece'
     year: 2024
 ```
 
