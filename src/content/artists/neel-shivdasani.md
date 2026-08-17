@@ -5,4 +5,6 @@ website: "https://neel.sh/"
 socials:
   instagram: "https://www.instagram.com/neel.shivdasani/"
   x: "https://x.com/dataneel"
+platforms:
+  - "https://gasp.gallery"
 ---
