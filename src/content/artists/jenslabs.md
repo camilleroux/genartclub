@@ -6,4 +6,5 @@ website: "https://linktr.ee/jenslabs"
 socials:
   instagram: "https://www.instagram.com/jenslabsbuilds/"
   x: "https://x.com/jenslabs"
+  mastodon: "https://genart.social/@jenslabs"
 ---

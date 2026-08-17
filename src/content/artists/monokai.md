@@ -9,6 +9,7 @@ socials:
   x: "https://x.com/monokai"
   bluesky: "https://bsky.app/profile/monokai.com"
   farcaster: "https://farcaster.xyz/monokai"
+  mastodon: "https://genart.social/@monokai"
   linkedin: "https://www.linkedin.com/in/wimer"
   github: "https://github.com/Monokai"
 platforms:

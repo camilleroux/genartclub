@@ -6,9 +6,14 @@ socials:
   instagram: "https://www.instagram.com/0xstc/"
   x: "https://x.com/_stc"
   bluesky: "https://bsky.app/profile/entangled.tools"
+  farcaster: "https://farcaster.xyz/stc"
+  mastodon: "https://genart.social/@stc"
   github: "https://github.com/stc"
 platforms:
   - "https://objkt.com/users/tz1av8SwB6GnswEha6ssRinaYM5bWft5ih69"
+  - "https://highlight.xyz/user/@agoston-nagy.eth"
+  - "https://www.fxhash.xyz/u/agoston%20nagy"
+  - "https://www.binaura.net/"
 artworks:
   - image: "../../assets/artworks/agoston-nagy/000.jpg"
     title: "re-frame"
