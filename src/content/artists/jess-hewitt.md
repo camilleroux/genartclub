@@ -1,7 +1,10 @@
 ---
 name: "Jess Hewitt"
-tagline: "Generative artist"
+tagline: "Artist and creative coder"
+website: "https://jesshewitt.net/"
 socials:
-  instagram: "https://www.instagram.com/rustysniper1/"
-  x: "https://x.com/rustysniper1"
+  bluesky: "https://bsky.app/profile/jesshewitt.net"
+  mastodon: "https://genart.social/@jesshewitt"
+  x: "https://x.com/JessHewittArt"
+  github: "https://github.com/jesshewitt"
 ---
