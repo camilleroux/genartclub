@@ -26,7 +26,6 @@ const NAMES: Record<string, string> = {
   'foundation.app': 'Foundation',
   'artblocks.io': 'Art Blocks',
   'highlight.xyz': 'Highlight',
-  'alba.art': 'Alba',
   'zora.co': 'Zora',
   'manifold.xyz': 'Manifold',
   'exchange.art': 'Exchange.art',
