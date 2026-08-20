@@ -1,8 +1,7 @@
 ---
-name: "jbarbeau.art"
-realName: "Jonathan Barbeau"
-tagline: "Generative artist"
-website: "https://linktr.ee/jobarbo"
+name: "Jonathan Barbeau"
+tagline: "Algorithmic artist"
+website: "https://jbarbeau.art"
 socials:
   instagram: "https://www.instagram.com/jbarbeau.art/"
   x: "https://x.com/JBarbeau_Art"
