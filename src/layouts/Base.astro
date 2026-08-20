@@ -17,7 +17,13 @@ interface Props {
   description: string;
   /** The home page is titled after the club itself, with nothing appended. */
   brandedTitle?: boolean;
-  /** Extra JSON-LD to describe the page contents. */
+  /**
+   * Extra JSON-LD to describe the page contents. Emitted at the end of the body
+   * rather than in the head: the directory lists every member, which is tens of
+   * kilobytes that would otherwise stream ahead of the inlined stylesheet and
+   * delay the first paint inlining it was meant to bring forward. Crawlers read
+   * it anywhere in the document.
+   */
   schema?: Record<string, unknown>;
   noindex?: boolean;
 }
@@ -50,8 +56,6 @@ const ogImage = new URL('/images/og.png', Astro.site).href;
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
-
-    {schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}
   </head>
   <body>
     <Nav />
@@ -59,5 +63,7 @@ const ogImage = new URL('/images/og.png', Astro.site).href;
       <slot />
     </main>
     <Footer />
+
+    {schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}
   </body>
 </html>

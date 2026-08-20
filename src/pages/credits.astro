@@ -1,18 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
-import { ARCHIVE_SOURCE, ORG_NAME, REPOSITORY, organization } from '../data/site';
+import {
+  ARCHIVE_SOURCE,
+  MEMBERSHIP,
+  ORG_NAME,
+  REPOSITORY,
+  organization,
+  websiteId,
+} from '../data/site';
 import { getMaintainer } from '../lib/maintainer';
+import { absolute } from '../lib/url';
 
 const maintainer = await getMaintainer(Astro.site);
 
 const description = `What this site is, who maintains it, and how to contribute to the directory of the ${ORG_NAME}.`;
 
+const url = absolute('/credits', Astro.site);
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
+  '@id': `${url}#page`,
   name: 'About this site',
-  url: new URL('/credits', Astro.site).href,
+  url,
   description,
+  isPartOf: { '@id': websiteId(Astro.site) },
   about: organization(Astro.site),
   maintainer: maintainer.node,
   isBasedOn: ARCHIVE_SOURCE,
@@ -33,10 +45,7 @@ const schema = {
           >{maintainer.name}</a
         >, a member of the club, with the agreement of the club and of its previous maintainer.
       </p>
-      <p>
-        Membership is by co-option: an artist belongs to the club when an existing member brings
-        them in, and only members are listed here.
-      </p>
+      <p>{MEMBERSHIP}</p>
       <p>
         The site is open source and every artist is a single Markdown file, so fixing your entry or
         adding an artwork is a small pull request. Everyone is welcome to contribute on <a

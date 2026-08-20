@@ -2,27 +2,17 @@
 import Base from '../../layouts/Base.astro';
 import ArtistLinks from '../../components/ArtistLinks.astro';
 import { getCollection } from 'astro:content';
-import { artistPath } from '../../lib/url';
-import { ORG_NAME } from '../../data/site';
+import { absolute, artistPath } from '../../lib/url';
+import { letterFor, personId, sortedByName } from '../../lib/artist';
+import { ORG_NAME, organization, websiteId } from '../../data/site';
 
 const artists = await getCollection('artists');
 
-// Sort ignoring case, accents and any leading punctuation, so ".jpg" and "Anna"
-// both land under the letter a reader would look for them.
-const sortKey = (value: string) =>
-  value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/^[^a-z0-9]+/, '');
-
-const keyed = artists
-  .map((artist) => ({ artist, key: sortKey(artist.data.name) }))
-  .sort((a, b) => a.key.localeCompare(b.key));
+const sorted = sortedByName(artists);
 
 const groups = new Map<string, typeof artists>();
-for (const { artist, key } of keyed) {
-  const letter = /^[a-z]/.exec(key)?.[0].toUpperCase() ?? '#';
+for (const artist of sorted) {
+  const letter = letterFor(artist.data.name);
   groups.set(letter, [...(groups.get(letter) ?? []), artist]);
 }
 
@@ -43,9 +33,49 @@ const sections = [...groups].map(([letter, members]) => ({
 }));
 
 const description = `The ${artists.length} members of the ${ORG_NAME}, with links to their work.`;
+
+const url = absolute('/artists', Astro.site);
+
+// The list is the point of this page, so it is declared as its main entity, in
+// the order it is read. Each member is named against the `@id` their own page
+// publishes, and nothing more: the id is that page's URL, so repeating the URL
+// beside it would ship every member's address twice for no reader.
+const members = sorted.map((artist, position) => ({
+  '@type': 'ListItem',
+  position: position + 1,
+  item: {
+    '@type': 'Person',
+    '@id': personId(artist, Astro.site),
+    name: artist.data.name,
+  },
+}));
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${url}#page`,
+      url,
+      name: 'Artists',
+      description,
+      isPartOf: { '@id': websiteId(Astro.site) },
+      about: organization(Astro.site),
+      mainEntity: { '@id': `${url}#directory` },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${url}#directory`,
+      name: `Members of the ${ORG_NAME}`,
+      numberOfItems: members.length,
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      itemListElement: members,
+    },
+  ],
+};
 ---
 
-<Base title="Artists" description={description}>
+<Base title="Artists" description={description} schema={schema}>
   <div class="wrap">
     <section class="section--tight">
       <h1 class="lede lede--small">Artists</h1>

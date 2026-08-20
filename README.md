@@ -121,7 +121,8 @@ it changes.
 ```text
 src/content/artists/     one Markdown file per artist
 src/content.config.ts    schema every artist file is validated against
-src/pages/               about (index), artists list, artist pages, 404
+src/pages/               about (index), artists list, artist pages, credits, 404,
+                         llms.txt
 src/components/          nav, footer, links, icons, home image strip
 src/data/platforms.ts    art platform registry (domain, name, icon)
 src/assets/              artworks and platform icons, optimised at build
@@ -131,15 +132,19 @@ public/                  logo, favicon, robots.txt, _redirects
 
 ## Deployment
 
-Pushes to `main` deploy automatically through Cloudflare Pages (build command
-`npm run build`, output directory `dist`). Pull requests get a preview URL.
+Pushes to `main` deploy automatically through Cloudflare Pages (output directory
+`dist`). Pull requests get a preview URL.
 
 One-time setup in the Cloudflare dashboard:
 
-1. Add `www.genartclub.com` as a custom domain on the Pages project.
-2. Add a redirect rule sending `genartclub.com/*` to
+1. Set the build command to `git fetch --unshallow && npm run build`. Pages clones
+   only the last commit, and the sitemap dates each page from the git history: with
+   a shallow clone every `lastmod` is left out, because a date the history cannot
+   account for is omitted rather than guessed.
+2. Add `www.genartclub.com` as a custom domain on the Pages project.
+3. Add a redirect rule sending `genartclub.com/*` to
    `https://www.genartclub.com/$1` with status 301.
-3. Optional: enable Web Analytics from the Metrics tab of the Pages project.
+4. Optional: enable Web Analytics from the Metrics tab of the Pages project.
    Cloudflare then injects its beacon into the deployed HTML itself, so the
    repository carries no analytics code and forks and local builds stay clean.
    Adding the snippet by hand on top of that would only count every visit twice.

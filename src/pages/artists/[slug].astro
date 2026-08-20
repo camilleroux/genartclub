@@ -4,7 +4,8 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ArtistLinks from '../../components/ArtistLinks.astro';
 import { artworkAlt } from '../../lib/url';
-import { personNode } from '../../lib/artist';
+import { ARTWORK_WIDTH, artworkNodes, personNode } from '../../lib/artist';
+import { breadcrumbList } from '../../lib/schema';
 import { ORG_NAME, organization } from '../../data/site';
 
 export async function getStaticPaths() {
@@ -32,8 +33,18 @@ const defined = (value: string | undefined): value is string => value !== undefi
 
 const schema = {
   '@context': 'https://schema.org',
-  ...personNode(artist, Astro.site),
-  memberOf: organization(Astro.site),
+  '@graph': [
+    {
+      ...personNode(artist, Astro.site),
+      memberOf: organization(Astro.site),
+    },
+    ...(await artworkNodes(artist, Astro.site)),
+    breadcrumbList(Astro.site, [
+      { name: 'Home', path: '/' },
+      { name: 'Artists', path: '/artists' },
+      { name: data.name },
+    ]),
+  ],
 };
 
 const description = [data.name, data.tagline, `member of the ${ORG_NAME}`]
@@ -83,8 +94,8 @@ const meta = [data.realName, data.pronouns, data.location].filter(defined);
               <Image
                 src={artwork.image}
                 alt={artworkAlt(artwork.title, data.name)}
-                width={1200}
-                widths={[500, 800, 1200]}
+                width={ARTWORK_WIDTH}
+                widths={[500, 800, ARTWORK_WIDTH]}
                 sizes="(max-width: 900px) 100vw, 40vw"
                 loading={index < EAGER_WORKS ? 'eager' : 'lazy'}
                 fetchpriority={index < EAGER_WORKS ? 'high' : undefined}

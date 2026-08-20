@@ -1,6 +1,6 @@
 import { getEntry } from 'astro:content';
 import { MAINTAINER_SLUG } from '../data/site';
-import { personNode } from './artist';
+import { artistUrl, personNode } from './artist';
 
 /**
  * The maintainer as a directory member: read from their own entry so the credit
@@ -18,7 +18,9 @@ export async function getMaintainer(site: URL | undefined) {
 
   return {
     name: entry.data.name,
+    // Their own site, and their entry here: two links that are never the same one.
     website: entry.data.website,
+    page: artistUrl(entry, site),
     node: personNode(entry, site),
   };
 }

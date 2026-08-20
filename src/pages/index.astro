@@ -2,11 +2,19 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Strip from '../components/Strip.astro';
-import { artistPath } from '../lib/url';
-import { ARCHIVE_SOURCE, DESCRIPTION, TAGLINE, organization } from '../data/site';
+import { absolute, artistPath } from '../lib/url';
+import {
+  ARCHIVE_SOURCE,
+  DESCRIPTION,
+  ORG_SHORT_NAME,
+  TAGLINE,
+  organization,
+  organizationId,
+  websiteId,
+} from '../data/site';
 import { getMaintainer } from '../lib/maintainer';
 
-const home = new URL('/', Astro.site).href;
+const home = absolute('/', Astro.site);
 
 // Two nodes: the club itself, and the website that documents it. Keeping them
 // distinct is what lets the site declare a maintainer without implying the club
@@ -15,19 +23,18 @@ const schema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@id': `${home}#organization`,
       ...organization(Astro.site),
-      logo: new URL('/images/logo.gif', Astro.site).href,
+      logo: absolute('/images/logo.gif', Astro.site),
       foundingDate: '2019',
       foundingLocation: { '@type': 'Place', name: 'Paris, France' },
       description: DESCRIPTION,
     },
     {
       '@type': 'WebSite',
-      '@id': `${home}#website`,
+      '@id': websiteId(Astro.site),
       url: home,
-      name: 'GenArtClub',
-      about: { '@id': `${home}#organization` },
+      name: ORG_SHORT_NAME,
+      about: { '@id': organizationId(Astro.site) },
       maintainer: (await getMaintainer(Astro.site)).node,
       // The rebuild is derived from the archived original; say so.
       isBasedOn: ARCHIVE_SOURCE,
@@ -86,10 +93,10 @@ for (const quote of quotes) {
   schema={schema}
 >
   <section class="section wrap">
-    <p class="lede">
+    <h1 class="lede">
       We aim to automate our artistic vision through rule-based systems. Our artwork manifests
       through digital mediums, crypto environments, robotics, and light.
-    </p>
+    </h1>
     <p class="prose mt-3">
       The artists and builders in this community are spearheading the future of generative art.
     </p>

@@ -10,6 +10,11 @@ export function artistPath(id: string): string {
   return `/artists/${id}`;
 }
 
+/** The published form of an internal path, for canonicals, links and structured data. */
+export function absolute(path: string, site: URL | undefined): string {
+  return new URL(path, site).href;
+}
+
 /** Readable host for display, and the key platforms are matched on. */
 export function hostname(url: string): string {
   return new URL(url).hostname.replace(/^www\./, '').toLowerCase();
