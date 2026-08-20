@@ -1,6 +1,5 @@
 ---
 name: "Jonathan Barbeau"
-realName: "Jonathan Barbeau"
 tagline: "Algorithmic artist"
 website: "https://jbarbeau.art"
 socials:
