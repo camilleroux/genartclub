@@ -8,7 +8,6 @@ socials:
   x: "https://x.com/luisfraguada"
   github: "https://github.com/fraguada"
 platforms:
-  platforms:
   - "https://verse.works/luis-e-fraguada"
   - "https://www.raster.art/artist/luis-e-fraguada"
   - "https://objkt.com/users/fraguada"
