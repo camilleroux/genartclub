@@ -149,10 +149,13 @@ Pushes to `main` deploy automatically through Cloudflare Pages (output directory
 
 One-time setup in the Cloudflare dashboard:
 
-1. Set the build command to `git fetch --unshallow && npm run build`. Pages clones
+1. Set the build command to `git fetch --unshallow; npm run build`. Pages clones
    only the last commit, and the sitemap dates each page from the git history: with
    a shallow clone every `lastmod` is left out, because a date the history cannot
-   account for is omitted rather than guessed.
+   account for is omitted rather than guessed. The semicolon is deliberate, and
+   `&&` would be a mistake: `--unshallow` exits 128 on a clone that is already
+   complete, which would take the whole deploy down for the sake of a date the
+   site can do without.
 2. Add `www.genartclub.com` as a custom domain on the Pages project.
 3. Add a redirect rule sending `genartclub.com/*` to
    `https://www.genartclub.com/$1` with status 301.
