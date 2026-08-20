@@ -34,13 +34,18 @@ names, however credible its source, is not a list of members.
 ## Fix the data, not the guard
 
 `npm run build` validates every file against `src/content.config.ts` and every
-image against `scripts/check-artworks.mjs`. Those messages are the
+image against `scripts/check-images.mjs`. Those messages are the
 specification, written for the contributor who will read them. When one fires,
 the file is wrong, not the rule.
 
 ## Absences that are deliberate
 
-There are no portraits or avatars anywhere: too many were missing to show them
-for some members and not others. Art platforms are typeset rather than pictured,
-for the reason given in CONTRIBUTING.md. The only client-side script shuffles the
-home page band.
+An `avatar` appears on an artist's own page and nowhere else. In the list of
+members it would show for some and not others, which is why it stays off there,
+and on a page that has none nothing takes its place: no placeholder, no initials,
+no reserved space. It is whatever the artist chose to be known by — a face, one of
+their works, a mark — so never describe it as a portrait, and never fetch one from
+a profile they did not put in their file.
+
+Art platforms are typeset rather than pictured, for the reason given in
+CONTRIBUTING.md. The only client-side script shuffles the home page band.

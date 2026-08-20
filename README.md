@@ -60,6 +60,17 @@ a typo is caught instead of quietly costing you a link.
   reads as a sentence fragment and starts with a capital: `Generative artist`,
   not `generative artist`. It follows you into the artists list and into the
   page description search engines show.
+- **`avatar`** is the image you are known by, shown beside your name, or above it
+  on a narrow screen: a face, one of your works, a mark, whichever you prefer —
+  the field is not called a portrait because nothing here asks you to show your
+  face. It is a path to a file in `src/assets/avatars/`, cropped to a square from
+  the middle at build time and displayed in a circle, so centre what matters and
+  expect the corners to go. It appears on your page only: the members list has
+  none, and a page without one shows nothing in its place rather than a
+  placeholder. Longest side at most 640px, under 128kB — it is only ever shown
+  small, so a bigger file is decoded at build time and thrown away; anything under
+  320px on its shorter side is accepted with a note, since that is the square it
+  gets scaled up to fill.
 - **`pronouns`** and **`location`** are free text, shown on one line under the
   name, after `realName` and in that order: `he/him`, `Montpellier, France`.
 - **`website`** is your own site, and the first link under your name. It shows
@@ -85,7 +96,8 @@ a typo is caught instead of quietly costing you a link.
 
 Every link you declare — `website`, `socials`, `platforms` — is also emitted as
 `sameAs` in the JSON-LD `Person` of your page, which is how a search engine ties
-this entry to the accounts you already have.
+this entry to the accounts you already have. An `avatar` is emitted there too, as
+`image`, which is the picture a search engine can show beside your name.
 
 ## Add an artwork
 
@@ -125,7 +137,7 @@ src/pages/               about (index), artists list, artist pages, credits, 404
                          llms.txt
 src/components/          nav, footer, links, icons, home image strip
 src/data/platforms.ts    art platform registry (domain, name, icon)
-src/assets/              artworks and platform icons, optimised at build
+src/assets/              artworks, avatars and platform icons, optimised at build
 src/styles/global.css    the whole theme
 public/                  logo, favicon, robots.txt, _redirects
 ```

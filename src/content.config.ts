@@ -46,7 +46,7 @@ export const SOCIAL_LABELS: Record<SocialKey, string> = {
  * Enough to show a body of work without one member dominating the repository.
  * Image dimensions and weight cannot be checked here: at validation time
  * `image()` still holds a path marker, not the resolved file, so that budget is
- * enforced by scripts/check-artworks.mjs before every build.
+ * enforced by scripts/check-images.mjs before every build.
  */
 const MAX_ARTWORKS = 10;
 
@@ -83,6 +83,14 @@ const artists = defineCollection({
             error: 'Taglines read as sentence fragments here, so start with a capital.',
           })
           .optional(),
+        /**
+         * The image the artist is known by, which they choose: a face, one of
+         * their works, a mark. Not called a portrait for that reason — most of
+         * this directory signs with an alias, and nothing here asks anyone to
+         * show their face. Shown on their own page only, and never stood in for:
+         * an entry without one shows nothing rather than a placeholder.
+         */
+        avatar: image().optional(),
         // Declared in the order they are shown, under the name.
         pronouns: z.string().optional(),
         location: z.string().optional(),

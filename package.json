@@ -6,9 +6,9 @@
   "description": "Website of the Generative Artists Club",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/check-artworks.mjs",
+    "prebuild": "node scripts/check-images.mjs",
     "build": "astro build",
-    "check:artworks": "node scripts/check-artworks.mjs",
+    "check:images": "node scripts/check-images.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier --write .",
@@ -18,7 +18,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/space-grotesk": "^5.2.9",
-    "astro": "^7.2.2",
+    "astro": "^7.2.4",
     "sharp": "^0.35.3",
     "simple-icons": "^16.28.0",
     "zod": "^4.4.3"

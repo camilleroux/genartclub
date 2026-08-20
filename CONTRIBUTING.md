@@ -17,7 +17,8 @@ will turn it into a pull request.
 2. Edit or add one file in `src/content/artists/` (see the README for the fields
    and a reference file).
 3. If you are adding artworks, put the images in
-   `src/assets/artworks/<your-slug>/` and reference them from your file.
+   `src/assets/artworks/<your-slug>/` and reference them from your file. An avatar
+   goes in `src/assets/avatars/`.
 4. Run `npm install` then `npm run build`. The build validates every artist file
    against the schema in `src/content.config.ts`, so a typo or an unknown field
    fails the build with a clear message instead of breaking the site.
@@ -45,6 +46,10 @@ will turn it into a pull request.
   with an alias and want your civil name on record too? Add `realName`.
 - **No email addresses.** They get scraped; use your website or a social profile.
 - **Links must work.** Dead links are removed when we notice them.
+- **An `avatar` is yours to supply.** A face, one of your works, a mark — whatever
+  you are known by, and only ever your own or one the person concerned handed you.
+  Never a picture lifted from someone's profile. See the README for where it shows
+  and what it may weigh.
 - **Images:** JPEG, PNG or WebP, longest side at most 2560px, under 2MB each.
   `npm run build` refuses anything past those two limits. Astro generates every
   smaller variant, so a larger file buys nothing — the site never displays an

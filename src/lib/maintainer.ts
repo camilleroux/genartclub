@@ -21,6 +21,6 @@ export async function getMaintainer(site: URL | undefined) {
     // Their own site, and their entry here: two links that are never the same one.
     website: entry.data.website,
     page: artistUrl(entry, site),
-    node: personNode(entry, site),
+    node: await personNode(entry, site),
   };
 }

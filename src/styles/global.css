@@ -505,13 +505,45 @@ a:hover .links__text {
 
 /* Artist page ------------------------------------------------------------- */
 
+/* The avatar takes a column of its own and the identity holds the rest, on the
+   model of the letter marks in the directory: a narrow fixed column, everything
+   else aligned against it. An entry without an avatar has no first column at all,
+   so nothing reserves the space and the name starts at the margin as before. */
 .profile__head {
-  display: grid;
-  justify-items: start;
-  gap: var(--space-1);
+  display: flex;
+  align-items: start;
+  gap: var(--space-2);
   margin-top: var(--space-3);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--rule);
+}
+
+.profile__identity {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+/* Round, and the only round thing here: every other image on the site is a work,
+   and works are rectangles, so the shape alone says this one is a person. The
+   hairline is the one the rows and the platform tags already use — without it a
+   photo shot against a pale wall would have no edge at all. Cropped square at
+   build time, so no aspect-ratio is needed to keep the circle from turning into
+   an ellipse. */
+.profile__avatar {
+  flex: none;
+  /* Twice the size of the name it stands beside, which is what keeps it from
+     competing with it. Not --space-5, which computes to the same thing today but
+     is redefined smaller below 900px, where the name is not. */
+  width: calc(var(--text-2xl) * 2);
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  /* The name's line box opens about this far above its capitals, so without the
+     nudge the circle aligns with nothing the eye can see. Cap height is what it
+     reads as level with. */
+  margin-top: var(--space-1);
 }
 
 .profile__name {
@@ -544,7 +576,7 @@ a:hover .links__text {
 }
 
 /* Child combinator: the platform row is itself a .links element. */
-.profile__head > .links {
+.profile__identity > .links {
   margin-top: var(--space-2);
 }
 
@@ -694,6 +726,17 @@ a:hover .links__text {
 
   .profile__name {
     font-size: var(--text-xl);
+  }
+
+  /* Same reclaim as the letter column: below this the name would be left wrapping
+     in what remains beside the avatar, so the avatar takes its own line. */
+  .profile__head {
+    flex-direction: column;
+  }
+
+  /* Nothing to align with once it is on its own line. */
+  .profile__avatar {
+    margin-top: 0;
   }
 
   /* Credits are unreachable without hover on touch screens. */

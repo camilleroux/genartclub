@@ -4,7 +4,7 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ArtistLinks from '../../components/ArtistLinks.astro';
 import { artworkAlt } from '../../lib/url';
-import { ARTWORK_WIDTH, artworkNodes, personNode } from '../../lib/artist';
+import { ARTWORK_WIDTH, AVATAR_IMAGE, artworkNodes, personNode } from '../../lib/artist';
 import { breadcrumbList } from '../../lib/schema';
 import { ORG_NAME, organization } from '../../data/site';
 
@@ -35,7 +35,7 @@ const schema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      ...personNode(artist, Astro.site),
+      ...(await personNode(artist, Astro.site)),
       memberOf: organization(Astro.site),
     },
     ...(await artworkNodes(artist, Astro.site)),
@@ -59,23 +59,38 @@ const meta = [data.realName, data.pronouns, data.location].filter(defined);
     <a class="back" href="/artists">&larr; All artists</a>
 
     <header class="profile__head">
-      <h1 class="profile__name">{data.name}</h1>
       {
-        meta.length > 0 && (
-          <div class="profile__meta">
-            {meta.map((item) => (
-              <span>{item}</span>
-            ))}
-          </div>
+        /* Empty alt: the name is the next thing read, and what the image shows —
+        a face, a work, a mark — is the artist's choice, not something to assert. */
+        data.avatar && (
+          <Image
+            class="profile__avatar"
+            src={data.avatar}
+            alt=""
+            {...AVATAR_IMAGE}
+            loading="eager"
+          />
         )
       }
-      {data.tagline && <p class="profile__tagline">{data.tagline}</p>}
-      <ArtistLinks
-        website={data.website}
-        socials={data.socials}
-        platforms={data.platforms}
-        stacked
-      />
+      <div class="profile__identity">
+        <h1 class="profile__name">{data.name}</h1>
+        {
+          meta.length > 0 && (
+            <div class="profile__meta">
+              {meta.map((item) => (
+                <span>{item}</span>
+              ))}
+            </div>
+          )
+        }
+        {data.tagline && <p class="profile__tagline">{data.tagline}</p>}
+        <ArtistLinks
+          website={data.website}
+          socials={data.socials}
+          platforms={data.platforms}
+          stacked
+        />
+      </div>
     </header>
 
     {
