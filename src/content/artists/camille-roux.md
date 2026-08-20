@@ -1,5 +1,6 @@
 ---
 name: "Camille Roux"
+avatar: "../../assets/avatars/camille-roux.jpg"
 tagline: "Algorithmic artist & creative coder"
 pronouns: "he/him"
 location: "Montpellier, France"
