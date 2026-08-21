@@ -8,12 +8,16 @@ body:
       value: |
         Prefer sending a pull request? A single Markdown file is all it takes —
         see [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md).
+
+        Only members are listed here: the club works by co-option, and an artist
+        belongs to it when an existing member brings them in.
+
         Please do not post an email address here.
   - type: input
     id: name
     attributes:
       label: Name
-      description: How you want to be credited — your own name, or the alias you sign your work with.
+      description: How you want to be credited — your own name, or the alias you sign your work with, written the way you sign it and without a leading @.
       placeholder: Jane Doe
     validations:
       required: true
@@ -29,6 +33,15 @@ body:
       label: Tagline
       description: The line under your name — a short description of your practice, not a bio.
       placeholder: Generative artist & creative coder
+  - type: textarea
+    id: avatar
+    attributes:
+      label: Avatar
+      description: >-
+        The image you want to be known by, shown beside your name on your own page:
+        a face, one of your works, a mark, whichever you prefer. Drag the file into
+        this field. It is cropped to a square from the middle, so centre what
+        matters; send it as you have it and a maintainer will resize it.
   - type: input
     id: pronouns
     attributes:
@@ -56,7 +69,7 @@ body:
     id: platforms
     attributes:
       label: Art platforms
-      description: One URL per line (fxhash, objkt, teia, gm.studio, SuperRare, OpenSea, Foundation, Art Blocks...).
+      description: One URL per line (fxhash, objkt, teia, gm.studio, SuperRare, OpenSea, Foundation, Art Blocks...). Your own site goes in Website above, not here.
       placeholder: |
         https://www.fxhash.xyz/u/janedoe
   - type: textarea
@@ -64,6 +77,17 @@ body:
     attributes:
       label: Short bio
       description: Optional, a few sentences.
+  - type: textarea
+    id: artworks
+    attributes:
+      label: Artworks
+      description: >-
+        Up to 10, shown on your page in the order you send them. Drag the files
+        into this field, and add the title and year each one should be captioned
+        with. Send them as you have them and a maintainer will resize anything
+        over budget.
+      placeholder: |
+        my-piece.jpg — My piece, 2024
   - type: checkboxes
     id: consent
     attributes:

@@ -49,13 +49,14 @@ will turn it into a pull request.
 - **An `avatar` is yours to supply.** A face, one of your works, a mark — whatever
   you are known by, and only ever your own or one the person concerned handed you.
   Never a picture lifted from someone's profile. See the README for where it shows
-  and what it may weigh.
-- **Images:** JPEG, PNG or WebP, longest side at most 2560px, under 2MB each.
-  `npm run build` refuses anything past those two limits. Astro generates every
-  smaller variant, so a larger file buys nothing — the site never displays an
-  artwork wider than about 1300px — while slowing every build and weighing on
-  every clone. An image narrower than 1200px is accepted and only gets a note:
-  it stays on your page but never joins the home page band.
+  and how it is cropped.
+- **Images:** JPEG, PNG or WebP. An artwork has its longest side at most 2560px
+  and weighs under 2MB; an avatar is only ever shown small and gets its own,
+  smaller budget — 640px and 128kB. `npm run build` refuses anything past those
+  limits. Astro generates every smaller variant, so a larger file buys nothing —
+  the site never displays an artwork wider than about 1300px — while slowing every
+  build and weighing on every clone. An artwork narrower than 1200px is accepted
+  and only gets a note: it stays on your page but never joins the home page band.
 - **Up to 10 artworks each.** The home page shows one work per artist at a time,
   so more would not give you more visibility.
 - **Keep the file in English**, like the rest of the repository.
