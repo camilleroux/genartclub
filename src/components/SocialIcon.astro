@@ -27,7 +27,7 @@ const { network, size = 18 } = Astro.props;
 
 // Named imports rather than an indexed namespace, so the build does not have to
 // parse all 3400 icons. LinkedIn has no entry: simple-icons dropped it over a
-// trademark request, and it falls back to a text label.
+// trademark request.
 const ICONS: Partial<Record<SocialKey, SimpleIcon>> = {
   instagram: siInstagram,
   x: siX,
@@ -42,7 +42,17 @@ const ICONS: Partial<Record<SocialKey, SimpleIcon>> = {
   github: siGithub,
 };
 
+/**
+ * What a network without a glyph is set in, on the same square as the others:
+ * the short form it is read as, not a redrawn logo. Brand colours are the ones
+ * simple-icons carries for the networks it does ship.
+ */
+const MARKS: Partial<Record<SocialKey, { text: string; hex: string }>> = {
+  linkedin: { text: 'in', hex: '0A66C2' },
+};
+
 const icon = ICONS[network];
+const mark = MARKS[network];
 ---
 
 {
@@ -57,6 +67,10 @@ const icon = ICONS[network];
     >
       <path d={icon.path} />
     </svg>
+  ) : mark ? (
+    <span class="mark" aria-hidden="true" style={`--brand: #${mark.hex}; --mark-size: ${size}px`}>
+      {mark.text}
+    </span>
   ) : (
     <span class="links__text">{SOCIAL_LABELS[network]}</span>
   )

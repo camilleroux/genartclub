@@ -466,6 +466,32 @@ img {
   opacity: 1;
 }
 
+/* A network with no glyph to inline is set on the same square, so the row keeps
+   its rhythm instead of breaking for one word. Bold because a two-letter mark at
+   regular weight reads lighter than the solid shapes beside it. */
+.mark {
+  display: grid;
+  place-items: center;
+  width: var(--mark-size);
+  height: var(--mark-size);
+  font-family: var(--font-mono);
+  font-size: calc(var(--mark-size) * 0.75);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--fg);
+  opacity: 0.55;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.links a:hover .mark,
+.links a:focus-visible .mark {
+  color: var(--brand, var(--fg));
+  opacity: 1;
+}
+
 /* Platforms are typeset rather than pictured: crisp at any pixel density, and
    consistent whether or not the brand has a usable logo. */
 .platform {
