@@ -12,6 +12,7 @@ socials:
   farcaster: "https://farcaster.xyz/camilleroux"
   mastodon: "https://genart.social/@camillerouxart"
   tiktok: "https://www.tiktok.com/@camillerouxart"
+  linkedin: "https://www.linkedin.com/in/camilleroux/"
   github: "https://github.com/camilleroux"
 platforms:
   - "https://www.fxhash.xyz/u/Camille%20Roux"
