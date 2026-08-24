@@ -16,8 +16,8 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/sudfah-17.jpg"
     title: "Sudfah #17"
     year: 2022
-  - image: "../../assets/artworks/melissa-wiederrecht/cosmic-rays-867.jpg"
-    title: "Cosmic Rays #867"
+  - image: "../../assets/artworks/melissa-wiederrecht/cosmic-rays-869.jpg"
+    title: "Cosmic Rays #869"
     year: 2023
   - image: "../../assets/artworks/melissa-wiederrecht/misbah-7.jpg"
     title: "Misbah #7"
