@@ -28,8 +28,8 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/take-wing-1.jpg"
     title: "Take Wing #1"
     year: 2022
-  - image: "../../assets/artworks/melissa-wiederrecht/zbageti-1.jpg"
-    title: "Zbageti #1"
+  - image: "../../assets/artworks/melissa-wiederrecht/zbageti-77.jpg"
+    title: "Zbageti #77"
     year: 2022
   - image: "../../assets/artworks/melissa-wiederrecht/solitude-43.jpg"
     title: "Solitude #43"
