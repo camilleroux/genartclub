@@ -31,9 +31,9 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/zbageti-77.jpg"
     title: "Zbageti #77"
     year: 2022
-  - image: "../../assets/artworks/melissa-wiederrecht/solitude-43.jpg"
-    title: "Solitude #43"
-    year: 2022
+  - image: "../../assets/artworks/melissa-wiederrecht/deja-vu-183.jpg"
+    title: "Deja Vu #183"
+    year: 2023
   - image: "../../assets/artworks/melissa-wiederrecht/beautiful-silence-48.jpg"
     title: "Beautiful Silence #48"
     year: 2023
