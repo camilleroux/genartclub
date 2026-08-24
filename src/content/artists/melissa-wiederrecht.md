@@ -19,8 +19,8 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/cosmic-rays-916.jpg"
     title: "Cosmic Rays #916"
     year: 2023
-  - image: "../../assets/artworks/melissa-wiederrecht/misbah-7.jpg"
-    title: "Misbah #7"
+  - image: "../../assets/artworks/melissa-wiederrecht/misbah-21.jpg"
+    title: "Misbah #21"
     year: 2024
   - image: "../../assets/artworks/melissa-wiederrecht/deja-vu-3.jpg"
     title: "Deja Vu #3"
