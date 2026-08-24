@@ -37,9 +37,9 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/sandaliya-3.jpg"
     title: "Sandaliya #3"
     year: 2022
-  - image: "../../assets/artworks/melissa-wiederrecht/orbs-1.jpg"
-    title: "Orbs #1"
-    year: 2022
+  - image: "../../assets/artworks/melissa-wiederrecht/the-corridor.jpg"
+    title: "The Corridor"
+    year: 2023
   - image: "../../assets/artworks/melissa-wiederrecht/crypto-native-1.jpg"
     title: "Crypto-Native #1"
     year: 2023
