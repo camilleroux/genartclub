@@ -25,8 +25,8 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/orbs-136.jpg"
     title: "Orbs #136"
     year: 2022
-  - image: "../../assets/artworks/melissa-wiederrecht/take-wing-1.jpg"
-    title: "Take Wing #1"
+  - image: "../../assets/artworks/melissa-wiederrecht/take-wing-102.jpg"
+    title: "Take Wing #102"
     year: 2022
   - image: "../../assets/artworks/melissa-wiederrecht/zbageti-77.jpg"
     title: "Zbageti #77"
@@ -40,8 +40,8 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/the-corridor.jpg"
     title: "The Corridor"
     year: 2023
-  - image: "../../assets/artworks/melissa-wiederrecht/crypto-native-1.jpg"
-    title: "Crypto-Native #1"
+  - image: "../../assets/artworks/melissa-wiederrecht/crypto-native-2.jpg"
+    title: "Crypto-Native #2"
     year: 2023
 ---
 
