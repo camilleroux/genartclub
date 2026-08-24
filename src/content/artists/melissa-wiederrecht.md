@@ -40,8 +40,8 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/the-corridor.jpg"
     title: "The Corridor"
     year: 2023
-  - image: "../../assets/artworks/melissa-wiederrecht/crypto-native-2.jpg"
-    title: "Crypto-Native #2"
+  - image: "../../assets/artworks/melissa-wiederrecht/crypto-native-1775.jpg"
+    title: "Crypto-Native #1775"
     year: 2023
 ---
 
