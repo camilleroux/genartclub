@@ -22,9 +22,9 @@ artworks:
   - image: "../../assets/artworks/melissa-wiederrecht/misbah-21.jpg"
     title: "Misbah #21"
     year: 2024
-  - image: "../../assets/artworks/melissa-wiederrecht/deja-vu-3.jpg"
-    title: "Deja Vu #3"
-    year: 2023
+  - image: "../../assets/artworks/melissa-wiederrecht/orbs-136.jpg"
+    title: "Orbs #136"
+    year: 2022
   - image: "../../assets/artworks/melissa-wiederrecht/take-wing-1.jpg"
     title: "Take Wing #1"
     year: 2022
