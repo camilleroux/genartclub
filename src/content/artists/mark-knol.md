@@ -1,10 +1,11 @@
 ---
 name: "Mark Knol"
-website: "https://blog.stroep.nl"
+website: "https://stroep.nl"
 socials:
   x: "https://x.com/mknol"
   github: "https://github.com/markknol"
 platforms:
-  - "https://objkt.com/profile/markknol/collections"
+  - "https://www.raster.art/artist/mark-knol"
+  - "https://objkt.com/@markknol/created"
   - "https://turtletoy.net/user/markknol"
 ---
