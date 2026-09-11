@@ -1,10 +1,13 @@
 ---
 name: "Owen Moore"
-website: "https://www.owenmoore.xyz/"
+tagline: "Artist & Creative Developer"
+location: "North Vancouver, Canada"
+website: "https://www.owmo.studio/"
 socials:
-  instagram: "https://www.instagram.com/owenmoore_xyz/"
-  x: "https://x.com/owenmoore_xyz"
-  github: "https://github.com/owenmoore"
-platforms:
-  - "https://www.shadertoy.com/user/owenmoore_xyz"
+  youtube: "https://www.youtube.com/@owmo_studio"
+  instagram: "https://www.instagram.com/owmo_studio/"
+  bluesky: "https://bsky.app/profile/owmo-studio.bsky.social"
+  github: "https://github.com/owmo-dev"
 ---
+
+Owen Moore (b. 1985) is an artist & creative developer based in North Vancouver, Canada, working with code, sound design, and web-based technology. His work incorporates custom shader graphics, pseudorandom systems, soundscapes, and interactivity as core elements. His artwork has been featured in the Art Blocks Curated collection and exhibited in Marfa, TX; Los Angeles, CA; and Vancouver, BC. At the heart of his practices is a passion for creative technology.
