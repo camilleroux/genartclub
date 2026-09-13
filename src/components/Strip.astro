@@ -78,101 +78,100 @@ const firstPerArtist = [...new Map(pool.map((item) => [item.href, item])).values
 const shown = firstPerArtist.slice(0, COUNT);
 ---
 
-{
-  pool.length > 0 && (
-    <section aria-label="Works by members">
-      <noscript>
-        <div class="strip">
-          {shown.map((item) => (
-            <figure class="strip__item">
-              <img src={item.wide.src} srcset={item.wide.srcset} sizes={CELL.wide.sizes} alt={item.alt} />
-              <figcaption class="strip__credit">
-                <a href={item.href}>{item.artist}</a>
-                {item.detail && <em> — {item.detail}</em>}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </noscript>
+{pool.length > 0 && (
+  <section aria-label="Works by members">
+    <noscript>
+      <div class="strip">
+        {shown.map((item) => (
+          <figure class="strip__item">
+            <img
+              src={item.wide.src}
+              srcset={item.wide.srcset}
+              sizes={CELL.wide.sizes}
+              alt={item.alt}
+            />
+            <figcaption class="strip__credit">
+              <a href={item.href}>{item.artist}</a>
+              {item.detail && <em> — {item.detail}</em>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </noscript>
 
-      <div class="strip" data-strip hidden />
+    <div class="strip" data-strip hidden />
 
-      {/* Builds the strip from a random pick before the browser fetches
+    {/* Builds the strip from a random pick before the browser fetches
           anything, so only the images actually shown are downloaded. */}
-      <script is:inline define:vars={{ pool, count: COUNT, cell: CELL }}>
-        (() => {
-          const strip = document.querySelector('[data-strip]');
-          if (!strip) return;
+    <script is:inline define:vars={{ pool, count: COUNT, cell: CELL }}>
+      (() => {
+        const strip = document.querySelector('[data-strip]');
+        if (!strip) return;
 
-          // Narrow screens get fewer, wider crops.
-          const narrow = window.matchMedia('(max-width: 544px)').matches;
-          const fits = narrow
-            ? 1
-            : window.matchMedia('(max-width: 900px)').matches
-              ? 2
-              : count;
+        // Narrow screens get fewer, wider crops.
+        const narrow = window.matchMedia('(max-width: 544px)').matches;
+        const fits = narrow ? 1 : window.matchMedia('(max-width: 900px)').matches ? 2 : count;
 
-          const shuffle = (list) => {
-            for (let i = list.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [list[i], list[j]] = [list[j], list[i]];
-            }
-            return list;
-          };
-
-          // Pick one work per artist first, so a prolific member cannot fill
-          // the band; only repeat artists if there are not enough of them.
-          const byArtist = new Map();
-          for (const item of pool) {
-            byArtist.set(item.href, [...(byArtist.get(item.href) ?? []), item]);
+        const shuffle = (list) => {
+          for (let i = list.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [list[i], list[j]] = [list[j], list[i]];
           }
-          const groups = shuffle([...byArtist.values()]);
-          const items = groups.map((works) => works[Math.floor(Math.random() * works.length)]);
-          if (items.length < fits) {
-            const rest = pool.filter((item) => !items.includes(item));
-            items.push(...shuffle(rest).slice(0, fits - items.length));
+          return list;
+        };
+
+        // Pick one work per artist first, so a prolific member cannot fill
+        // the band; only repeat artists if there are not enough of them.
+        const byArtist = new Map();
+        for (const item of pool) {
+          byArtist.set(item.href, [...(byArtist.get(item.href) ?? []), item]);
+        }
+        const groups = shuffle([...byArtist.values()]);
+        const items = groups.map((works) => works[Math.floor(Math.random() * works.length)]);
+        if (items.length < fits) {
+          const rest = pool.filter((item) => !items.includes(item));
+          items.push(...shuffle(rest).slice(0, fits - items.length));
+        }
+
+        const shape = narrow ? cell.narrow : cell.wide;
+        const fragment = document.createDocumentFragment();
+
+        items.slice(0, fits).forEach((item, index) => {
+          const figure = document.createElement('figure');
+          figure.className = 'strip__item';
+
+          const img = document.createElement('img');
+          const crop = narrow ? item.narrow : item.wide;
+          img.srcset = crop.srcset;
+          img.sizes = shape.sizes;
+          img.src = crop.src;
+          img.alt = item.alt;
+          // These come from the same build-time pipeline as <Image>; the
+          // marker tells the dev toolbar audit not to flag them as raw tags.
+          img.dataset.imageComponent = '';
+          // This band is the largest thing above the fold.
+          if (index === 0) img.fetchPriority = 'high';
+          figure.append(img);
+
+          const caption = document.createElement('figcaption');
+          caption.className = 'strip__credit';
+          const link = document.createElement('a');
+          link.href = item.href;
+          link.textContent = item.artist;
+          caption.append(link);
+          if (item.detail) {
+            const em = document.createElement('em');
+            em.textContent = ` — ${item.detail}`;
+            caption.append(em);
           }
+          figure.append(caption);
 
-          const shape = narrow ? cell.narrow : cell.wide;
-          const fragment = document.createDocumentFragment();
+          fragment.append(figure);
+        });
 
-          items.slice(0, fits).forEach((item, index) => {
-            const figure = document.createElement('figure');
-            figure.className = 'strip__item';
-
-            const img = document.createElement('img');
-            const crop = narrow ? item.narrow : item.wide;
-            img.srcset = crop.srcset;
-            img.sizes = shape.sizes;
-            img.src = crop.src;
-            img.alt = item.alt;
-            // These come from the same build-time pipeline as <Image>; the
-            // marker tells the dev toolbar audit not to flag them as raw tags.
-            img.dataset.imageComponent = '';
-            // This band is the largest thing above the fold.
-            if (index === 0) img.fetchPriority = 'high';
-            figure.append(img);
-
-            const caption = document.createElement('figcaption');
-            caption.className = 'strip__credit';
-            const link = document.createElement('a');
-            link.href = item.href;
-            link.textContent = item.artist;
-            caption.append(link);
-            if (item.detail) {
-              const em = document.createElement('em');
-              em.textContent = ` — ${item.detail}`;
-              caption.append(em);
-            }
-            figure.append(caption);
-
-            fragment.append(figure);
-          });
-
-          strip.append(fragment);
-          strip.hidden = false;
-        })();
-      </script>
-    </section>
-  )
-}
+        strip.append(fragment);
+        strip.hidden = false;
+      })();
+    </script>
+  </section>
+)}

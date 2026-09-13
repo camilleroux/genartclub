@@ -30,38 +30,32 @@ const iconSize = stacked ? 22 : 18;
 
 <div class:list={['links', stacked && 'links--stacked']}>
   <div class="links links--row">
-    {
-      website && (
-        <a class="links__site" href={website} target="_blank" rel="noopener me">
-          {stacked ? hostname(website) : 'Website'}
-        </a>
-      )
-    }
-    {
-      orderedSocials.map(({ key, url }) => (
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener me"
-          title={SOCIAL_LABELS[key]}
-          aria-label={SOCIAL_LABELS[key]}
-        >
-          <SocialIcon network={key} size={iconSize} />
-        </a>
-      ))
-    }
+    {website && (
+      <a class="links__site" href={website} target="_blank" rel="noopener me">
+        {stacked ? hostname(website) : 'Website'}
+      </a>
+    )}
+    {orderedSocials.map(({ key, url }) => (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener me"
+        title={SOCIAL_LABELS[key]}
+        aria-label={SOCIAL_LABELS[key]}
+      >
+        <SocialIcon network={key} size={iconSize} />
+      </a>
+    ))}
   </div>
 
-  {
-    shownPlatforms.length > 0 && (
-      <div class="links links--row links--platforms">
-        <span class="links__label">Also on</span>
-        {shownPlatforms.map((url) => (
-          <a class="platform" href={url} target="_blank" rel="noopener">
-            {platformName(url)}
-          </a>
-        ))}
-      </div>
-    )
-  }
+  {shownPlatforms.length > 0 && (
+    <div class="links links--row links--platforms">
+      <span class="links__label">Also on</span>
+      {shownPlatforms.map((url) => (
+        <a class="platform" href={url} target="_blank" rel="noopener">
+          {platformName(url)}
+        </a>
+      ))}
+    </div>
+  )}
 </div>

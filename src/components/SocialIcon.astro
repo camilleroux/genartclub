@@ -55,23 +55,21 @@ const icon = ICONS[network];
 const mark = MARKS[network];
 ---
 
-{
-  icon ? (
-    <svg
-      class="icon"
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      aria-hidden="true"
-      style={`--brand: #${icon.hex}`}
-    >
-      <path d={icon.path} />
-    </svg>
-  ) : mark ? (
-    <span class="mark" aria-hidden="true" style={`--brand: #${mark.hex}; --mark-size: ${size}px`}>
-      {mark.text}
-    </span>
-  ) : (
-    <span class="links__text">{SOCIAL_LABELS[network]}</span>
-  )
-}
+{icon ? (
+  <svg
+    class="icon"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    aria-hidden="true"
+    style={`--brand: #${icon.hex}`}
+  >
+    <path d={icon.path} />
+  </svg>
+) : mark ? (
+  <span class="mark" aria-hidden="true" style={`--brand: #${mark.hex}; --mark-size: ${size}px`}>
+    {mark.text}
+  </span>
+) : (
+  <span class="links__text">{SOCIAL_LABELS[network]}</span>
+)}
