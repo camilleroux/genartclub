@@ -85,38 +85,34 @@ const schema = {
     </section>
 
     <nav class="index" aria-label="Jump to letter">
-      {
-        index.map((entry) =>
-          entry.present ? (
-            <a href={`#${entry.id}`}>{entry.letter}</a>
-          ) : (
-            <span aria-hidden="true">{entry.letter}</span>
-          ),
-        )
-      }
+      {index.map((entry) =>
+        entry.present ? (
+          <a href={`#${entry.id}`}>{entry.letter}</a>
+        ) : (
+          <span aria-hidden="true">{entry.letter}</span>
+        ),
+      )}
     </nav>
 
-    {
-      sections.map((entry) => (
-        <section class="letter" id={entry.id}>
-          <h2 class="letter__mark" aria-label={`Artists starting with ${entry.letter}`}>
-            {entry.letter}
-          </h2>
-          <div>
-            {entry.members.map((artist) => (
-              <article class="row">
-                <div>
-                  <p class="row__name">
-                    <a href={artistPath(artist.id)}>{artist.data.name}</a>
-                  </p>
-                  {artist.data.tagline && <p class="row__tagline">{artist.data.tagline}</p>}
-                </div>
-                <ArtistLinks website={artist.data.website} socials={artist.data.socials} compact />
-              </article>
-            ))}
-          </div>
-        </section>
-      ))
-    }
+    {sections.map((entry) => (
+      <section class="letter" id={entry.id}>
+        <h2 class="letter__mark" aria-label={`Artists starting with ${entry.letter}`}>
+          {entry.letter}
+        </h2>
+        <div>
+          {entry.members.map((artist) => (
+            <article class="row">
+              <div>
+                <p class="row__name">
+                  <a href={artistPath(artist.id)}>{artist.data.name}</a>
+                </p>
+                {artist.data.tagline && <p class="row__tagline">{artist.data.tagline}</p>}
+              </div>
+              <ArtistLinks website={artist.data.website} socials={artist.data.socials} compact />
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
   </div>
 </Base>

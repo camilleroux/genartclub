@@ -64,6 +64,8 @@ const ogImage = new URL('/images/og.png', Astro.site).href;
     </main>
     <Footer />
 
-    {schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}
+    {schema && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)}></script>
+    )}
   </body>
 </html>

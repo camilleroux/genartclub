@@ -133,23 +133,21 @@ for (const quote of quotes) {
   <section class="section wrap">
     <p class="eyebrow">Members</p>
     <div class="quotes">
-      {
-        quotes.map((quote) => (
-          <blockquote class="quote">
-            <p class="quote__text">{quote.text}</p>
-            <p class="quote__who">
-              {quote.slug ? (
-                <a href={artistPath(quote.slug)}>
-                  <strong>{quote.who}</strong>
-                </a>
-              ) : (
+      {quotes.map((quote) => (
+        <blockquote class="quote">
+          <p class="quote__text">{quote.text}</p>
+          <p class="quote__who">
+            {quote.slug ? (
+              <a href={artistPath(quote.slug)}>
                 <strong>{quote.who}</strong>
-              )}{' '}
-              — Artist &amp; Member
-            </p>
-          </blockquote>
-        ))
-      }
+              </a>
+            ) : (
+              <strong>{quote.who}</strong>
+            )}{' '}
+            — Artist &amp; Member
+          </p>
+        </blockquote>
+      ))}
     </div>
   </section>
 </Base>

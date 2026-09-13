@@ -56,7 +56,9 @@ const meta = [data.realName, data.pronouns, data.location].filter(defined);
 
 <Base title={data.name} description={description} schema={schema}>
   <div class="wrap section--tight">
-    <a class="back" href="/artists">&larr; All artists</a>
+    <a class="back" href="/artists">
+      &larr; All artists
+    </a>
 
     <header class="profile__head">
       {
@@ -74,15 +76,13 @@ const meta = [data.realName, data.pronouns, data.location].filter(defined);
       }
       <div class="profile__identity">
         <h1 class="profile__name">{data.name}</h1>
-        {
-          meta.length > 0 && (
-            <div class="profile__meta">
-              {meta.map((item) => (
-                <span>{item}</span>
-              ))}
-            </div>
-          )
-        }
+        {meta.length > 0 && (
+          <div class="profile__meta">
+            {meta.map((item) => (
+              <span>{item}</span>
+            ))}
+          </div>
+        )}
         {data.tagline && <p class="profile__tagline">{data.tagline}</p>}
         <ArtistLinks
           website={data.website}
@@ -93,39 +93,35 @@ const meta = [data.realName, data.pronouns, data.location].filter(defined);
       </div>
     </header>
 
-    {
-      artist.body?.trim() && (
-        <div class="profile__bio">
-          <Content />
-        </div>
-      )
-    }
+    {artist.body?.trim() && (
+      <div class="profile__bio">
+        <Content />
+      </div>
+    )}
 
-    {
-      data.artworks && data.artworks.length > 0 && (
-        <div class="works">
-          {data.artworks.map((artwork, index) => (
-            <figure class="work">
-              <Image
-                src={artwork.image}
-                alt={artworkAlt(artwork.title, data.name)}
-                width={ARTWORK_WIDTH}
-                widths={[500, 800, ARTWORK_WIDTH]}
-                sizes="(max-width: 900px) 100vw, 40vw"
-                loading={index < EAGER_WORKS ? 'eager' : 'lazy'}
-                fetchpriority={index < EAGER_WORKS ? 'high' : undefined}
-              />
-              {(artwork.title || artwork.year) && (
-                <figcaption>
-                  {artwork.title}
-                  {artwork.title && artwork.year && ' — '}
-                  {artwork.year}
-                </figcaption>
-              )}
-            </figure>
-          ))}
-        </div>
-      )
-    }
+    {data.artworks && data.artworks.length > 0 && (
+      <div class="works">
+        {data.artworks.map((artwork, index) => (
+          <figure class="work">
+            <Image
+              src={artwork.image}
+              alt={artworkAlt(artwork.title, data.name)}
+              width={ARTWORK_WIDTH}
+              widths={[500, 800, ARTWORK_WIDTH]}
+              sizes="(max-width: 900px) 100vw, 40vw"
+              loading={index < EAGER_WORKS ? 'eager' : 'lazy'}
+              fetchpriority={index < EAGER_WORKS ? 'high' : undefined}
+            />
+            {(artwork.title || artwork.year) && (
+              <figcaption>
+                {artwork.title}
+                {artwork.title && artwork.year && ' — '}
+                {artwork.year}
+              </figcaption>
+            )}
+          </figure>
+        ))}
+      </div>
+    )}
   </div>
 </Base>
