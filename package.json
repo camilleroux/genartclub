@@ -18,9 +18,9 @@
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/space-grotesk": "^5.2.9",
-    "astro": "^7.3.3",
-    "sharp": "^0.35.3",
-    "simple-icons": "^16.31.0",
+    "astro": "^7.3.5",
+    "sharp": "^0.35.5",
+    "simple-icons": "^16.33.0",
     "zod": "^4.6.5"
   },
   "allowScripts": {
@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "prettier": "^3.9.7",
-    "prettier-plugin-astro": "^1.0.1",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
     "typescript": "^6.0.3"
   }
 }
