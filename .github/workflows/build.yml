@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
+          # The runner's cached 22.x can lag behind the minimum Astro requires.
+          check-latest: true
           cache: npm
       - run: npm ci
       # Before the build, so a formatting slip is reported in seconds rather
