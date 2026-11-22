@@ -15,12 +15,12 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/sitemap": "^3.7.6",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/space-grotesk": "^5.2.9",
-    "astro": "^7.4.5",
+    "astro": "^7.4.13",
     "sharp": "^0.35.5",
-    "simple-icons": "^16.36.0",
+    "simple-icons": "^16.38.0",
     "zod": "^4.6.5"
   },
   "allowScripts": {
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "prettier": "^3.9.10",
+    "prettier": "^3.10.1",
     "prettier-plugin-astro": "^1.1.2",
     "typescript": "^6.0.3"
   }
